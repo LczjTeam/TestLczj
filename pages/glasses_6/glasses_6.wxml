@@ -11,16 +11,16 @@
             </view>
            </block>  
           </view>
-          <cover-view class="cover-v">
-            <cover-view class="cover-v-v"> 
+          <view class="cover-v" style='text-align:center;'>
+            <!-- <cover-view class="cover-v-v"> 
               <cover-image class="btnImg-small" style='margin-top:20px;float:left;margin-left:20rpx;' src="../../images/icon/reset_1.png"   bindtap="resets"/> 
             </cover-view>
-            <cover-view class="cover-v-v" style='text-align:center;' >  
-                <button class="weui-btn  btn" type="primary"  bindtap='next' plain='true'   size="mini"> \t 下一步\t  </button> 
-            </cover-view>
+            <cover-view class="cover-v-v" style='text-align:center;' >   -->
+  <button class="weui-btn  btn" type="primary"  bindtap='next' plain='true'   size="mini">下一步</button>
+            <!-- </cover-view>
             <cover-view class="cover-v-v"> 
                  <cover-image class="btnImg-small" style='margin-top:20px;float:right;margin-right:20rpx;' src="../../images/icon/save.png" bindtap='saveImage' /> 
-             </cover-view>
-          </cover-view>
+             </cover-view> -->
+          </view>
   </view> 
 </view>

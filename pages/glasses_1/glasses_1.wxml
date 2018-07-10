@@ -12,6 +12,6 @@
     </view>   
   </block>
 <view class="itm" style="height:30px;margin-bottom:20px;">
-  <button class="weui-btn  btn" type="warn"  bindtap='next' plain='true'   size="mini">下一步</button>
+  <button class="weui-btn  btn" type="primary"  bindtap='next' plain='true'   size="mini">下一步</button>
 </view>
 </view>
