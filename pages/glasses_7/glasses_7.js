@@ -108,5 +108,10 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+  next:function () {
+    wx.navigateTo({
+      url: '../glasses_8/glasses_8',
+    })
+  } 
 })

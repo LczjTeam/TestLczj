@@ -5,14 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    listData:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
   
+  onLoad: function (options) {
+    var params = {};
+    wx.request({
+      url: 'http://jx-lczj.nat300.top/Lczj/eyeglass/list',
+      data: params,
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      success: (res) => {
+        console.log(res.data);
+         this.setData({
+           listData : res.data
+         })
+      }
+    })
   },
 
   /**
@@ -62,5 +77,10 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+  next: function () {
+    wx.navigateTo({
+      url: '../glasses_9/glasses_9',
+    })
+  } 
 })

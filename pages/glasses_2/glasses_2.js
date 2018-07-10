@@ -360,7 +360,7 @@ Page({
      * 推荐镜框
      */
     wx.request({
-      url: 'http://jx-lczj.nat300.top/Lczj/good/recommend',
+      url: 'http://jx-lczj.nat300.top/Lczj/good/list',
       data: params,
       method: "POST",
       header: {
@@ -371,7 +371,7 @@ Page({
         console.log(res.data[0].t_attachments[0].path)
 
         //设置第一张图片
-        wx.setStorageSync("default-path", res.data[0].t_attachments[0].path)
+        wx.setStorageSync("default-path", res.data[0].t_wears[0].path)
         wx.setStorageSync("recommends", res.data)
       }
     })

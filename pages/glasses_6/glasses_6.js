@@ -22,8 +22,8 @@ Page({
     for(var i = 0 ;  i < list.length ;i++){
       var item = {};
       item.goods = list[i].t_goods.goods;
-      item.path = list[i].t_attachments[0].path; 
-      item.image = "http://jx-lczj.nat300.top/Lczj/goods/"+list[i].t_attachments[0].path;
+      item.path = list[i].t_wears[0].path; 
+      item.image = "http://jx-lczj.nat300.top/Lczj/goods/" + list[i].t_wears[0].path;
       listInfo.push(item);
     }
  

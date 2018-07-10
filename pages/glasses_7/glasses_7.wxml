@@ -1,10 +1,10 @@
 <view class="page">
   <swiper indicator-dots="{{indicatorDots}}"  
       autoplay="{{autoplay}}"  style="height:{{bannerHeight}}px;" interval="{{interval}}" duration="{{duration}}">  
-    <block wx:for="{{imgUrls}}" wx:key = 'unique'>  
+    <block wx:for="{{good.t_attachments}}" wx:key = 'unique'>  
       <swiper-item style="height:auto;">  
-          <navigator url="{{item.link}}" style="height:auto;" hover-class="navigator-hover">  
-          <image src="{{item.url}}" class="slide-image" mode="widthFix" bindload='imageLoad'/>  
+          <navigator url="{{item.name}}" style="height:auto;" hover-class="navigator-hover">  
+          <image src="http://jx-lczj.nat300.top/Lczj/goods/{{item.path}}" class="slide-image" mode="widthFix" bindload='imageLoad'/>  
           </navigator>   
       </swiper-item>  
     </block>  
