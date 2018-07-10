@@ -14,7 +14,7 @@
     "pages/reciver/reciver",
     "pages/reciver-add/reciver-add",
     "pages/person/person",
-    "pages/stores/stores", 
+    "pages/stores/stores",
     "pages/baikedetail/baikedetail",
     "pages/glasses_0/glasses_0",
     "pages/glasses_1/glasses_1",
@@ -22,7 +22,10 @@
     "pages/glasses_3/glasses_3",
     "pages/glasses_4/glasses_4",
     "pages/glasses_5/glasses_5",
-    "pages/glasses_6/glasses_6"
+    "pages/glasses_6/glasses_6",
+    "pages/glasses_7/glasses_7",
+    "pages/glasses_8/glasses_8",
+    "pages/glasses_8"
   ],
   "window": {
     "backgroundTextStyle": "#FFFFFF",
