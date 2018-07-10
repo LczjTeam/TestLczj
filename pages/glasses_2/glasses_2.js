@@ -368,6 +368,10 @@ Page({
       },
       success: (res) => {
         console.log(res.data)  
+        console.log(res.data[0].t_attachments[0].path)
+
+        //设置第一张图片
+        wx.setStorageSync("default-path", res.data[0].t_attachments[0].path)
         wx.setStorageSync("recommends", res.data)
       }
     })

@@ -1,0 +1,44 @@
+<view class="page">
+  <swiper indicator-dots="{{indicatorDots}}"  
+      autoplay="{{autoplay}}"  style="height:{{bannerHeight}}px;" interval="{{interval}}" duration="{{duration}}">  
+    <block wx:for="{{imgUrls}}" wx:key = 'unique'>  
+      <swiper-item style="height:auto;">  
+          <navigator url="{{item.link}}" style="height:auto;" hover-class="navigator-hover">  
+          <image src="{{item.url}}" class="slide-image" mode="widthFix" bindload='imageLoad'/>  
+          </navigator>   
+      </swiper-item>  
+    </block>  
+  </swiper>  
+  <view class="rows">
+      <view class="price">￥{{good.t_goods.price}}</view>
+  </view>  
+  <view class="rows">
+      <view class="title">{{good.t_goods.name}}({{good.t_brand.name}}\t{{good.t_goods.models}})</view>
+  </view>
+  <view class="rows" style='height:auto;'>
+    <view class='info'>
+      <view class="col-4">品牌:{{good.t_brand.name}}</view> 
+      <view class="col-4">型号:{{good.t_goods.models}}</view> 
+      <view class="col-4">适用性别:{{good.t_goods.suitable_sex==0 ? '通用' :( good.t_goods.suitable_sex==1 ? '男':'女') }}</view> 
+    </view>
+    <view class='info'>
+      <view class="col-4">镜面宽:{{good.t_goods.width}}mm</view>
+      <view class="col-4">镜面高:{{good.t_goods.height}}mm</view>
+      <view class="col-4">鼻尖距:{{good.t_goods.space}}mm</view>
+      
+    </view>
+    <view class='info'>
+      <view class="col-4">镜总宽:{{good.t_goods.max_width}}mm</view> 
+      <view class="col-4">镜腿长:{{good.t_goods.length}}mm</view>  
+    </view>
+  </view>
+  <view class="rows" >
+    <block wx:for="{{good.t_colors}}" wx:key = 'unique'>  
+      <image style='height:30px;width:30px;margin-left:10px;' src="http://jx-lczj.nat300.top/Lczj/colors/{{item.rgb}}"></image>
+    </block>
+  </view>
+  <view class="rows">
+      <view class="next">  <button class="weui-btn  btn" type="primary"  bindtap='next' plain='true'   size="mini">确认，下一步</button>
+</view>
+  </view>
+</view>

@@ -95,13 +95,16 @@ Page({
       filePath: card, 
       name: 'file',
       formData: {
-        age: wx.getStorageSync('age'),
-        sex: wx.getStorageSync('sex'),
-        station: wx.getStorageSync('station'),
+         path:wx.getStorageSync("default-path") 
       },
-      success:  (res)=> {
+      success:  (res)=> { 
+        
+        var rs = JSON.parse(res.data);
 
-        if(res.data=='-2'){
+        rs.root = 'upload';
+
+        wx.setStorageSync("src_dst", rs)  
+        if (rs.src=='-2'){
           //alert("照片未找到正脸");
           wx.showToast({
             title: '照片未找到正脸',
@@ -111,7 +114,7 @@ Page({
           this.setData({
             current: 0
           });
-        } else if(res.data=='-1'){
+        } else if (rs.src=='-1'){
           //alert("照片未找到眼睛，请睁大眼睛！");
           wx.showToast({
             title: '照片未找到眼睛，请睁大眼睛！',
@@ -121,7 +124,7 @@ Page({
           this.setData({
             current: 0
           });
-        } else if (res.data == '-3') {
+        } else if (rs.src == '-3') {
           //alert("请重新选择图片或拍照");
           wx.showToast({
             title: '请重新选择图片或拍照',
@@ -134,11 +137,12 @@ Page({
           });
         }else{ 
           this.setData({ 
-            src: wx.getStorageSync('host') +res.data
+            src: wx.getStorageSync('host') +rs.dst
           })
 
+
           wx.navigateTo({
-            url: '../glasses_6/glasses_6?src_url='+wx.getStorageSync('host') + res.data,
+            url: '../glasses_6/glasses_6?src_url=' + wx.getStorageSync('host') + rs.dst,
           })
         }
 

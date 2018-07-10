@@ -5,17 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    src:''
+    src:'',
+    listData : [],
+    current: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var list = wx.getStorageSync("recommends");
+
+
+    var listInfo = [];
+    for(var i = 0 ;  i < list.length ;i++){
+      var item = {};
+      item.goods = list[i].t_goods.goods;
+      item.path = list[i].t_attachments[0].path; 
+      item.image = "http://jx-lczj.nat300.top/Lczj/goods/"+list[i].t_attachments[0].path;
+      listInfo.push(item);
+    }
+ 
+
+
+
     var userInfo = options.src_url ;
     this.setData({
+      listData : listInfo,  
+      current: listInfo[0].goods,
       src:userInfo
     });
+    console.log(JSON.stringify(this.data.listData, null, 4))
 
   },
 
@@ -92,5 +113,40 @@ Page({
         console.log(err.detail)
       }
     })
-  }
+  }, setVal: function (event) {
+    var id = event.currentTarget.dataset.id;
+    console.log(id);
+    wx.setStorageSync('goods', this.data.listData[id].goods);
+    this.setData({
+      current: id
+    })
+    var rs = wx.getStorageSync("src_dst");
+    console.log(rs)
+    
+    var glass = this.data.listData[id].path;
+
+    wx.request({
+      url: 'http://jx-lczj.nat300.top/Lczj/files/wearglasses', //仅为示例，并非真实的接口地址
+      data: {
+        root: rs.root,
+        url: rs.src,
+        glasses: glass,
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: (res) => {
+        console.log(res.data)
+        rs.dst = res.data;
+        wx.setStorageSync("src_dst", rs) 
+        this.data.src = wx.getStorageSync('host') + res.data;
+      }
+    })
+      
+  },
+  next:function(){
+    wx.navigateTo({
+      url: '../glasses_7/glasses_7',
+    })
+  } 
 })

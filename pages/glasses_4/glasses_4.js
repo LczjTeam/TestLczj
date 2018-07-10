@@ -66,6 +66,7 @@ Page({
     wx.request({
       url: 'http://jx-lczj.nat300.top/Lczj/files/wearglasses', //仅为示例，并非真实的接口地址
       data: {
+        root:'models',
         url:url,
         glasses:'C:/OpenCVConfig/glasses/male/glasses_0.png',
       },
@@ -74,6 +75,13 @@ Page({
       },
       success: (res) => {
         console.log(res.data)  
+
+        var rs = {};
+        rs.root = 'models';
+        rs.src = url;
+        rs.dst =  res.data; 
+        wx.setStorageSync("src_dst", rs)  
+
         wx.navigateTo({
           url: '../glasses_6/glasses_6?src_url=' + wx.getStorageSync('host') + res.data,
         })

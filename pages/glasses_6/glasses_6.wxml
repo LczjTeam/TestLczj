@@ -5,29 +5,18 @@
         </view> 
 
           <view class="cover-v-1" >  
-            <view style="width:100%;height:auto;padding-top:25px;" >
-              <image   style='width:100%;' mode="widthFix"  src="/images/icon/g.png"  />
+           <block wx:for="{{listData}}" wx:key="unique" > 
+            <view data-id='{{index}}' bindtap='setVal' style="width:100%;height:auto;min-height:40px;padding-top:14px;padding-bottom:10px;{{ current == index ? 'border:1px solid #f0f0f0;' :''}}" >
+              <image    style='width:100%;' mode="widthFix"  src="{{item.image}}"   />
             </view>
-            <view style="width:100%;height:auto;padding-top:25px;" >
-              <image   style='width:100%;' mode="widthFix"  src="/images/icon/g.png"  />
-            </view>
-            <view style="width:100%;height:auto;padding-top:25px;" >
-              <image   style='width:100%;' mode="widthFix"  src="/images/icon/g.png"  />
-            </view> 
-
-            <view style="width:100%;height:auto;padding-top:25px;" >
-              <image   style='width:100%;' mode="widthFix"  src="/images/icon/g.png"  />
-            </view> 
-            <view style="width:100%;height:auto;padding-top:25px;" >
-              <image   style='width:100%;' mode="widthFix"  src="/images/icon/g.png"  />
-            </view> 
+           </block>  
           </view>
           <cover-view class="cover-v">
             <cover-view class="cover-v-v"> 
               <cover-image class="btnImg-small" style='margin-top:20px;float:left;margin-left:20rpx;' src="../../images/icon/reset_1.png"   bindtap="resets"/> 
             </cover-view>
             <cover-view class="cover-v-v" style='text-align:center;' >  
-                <button class="weui-btn  btn" type="primary"  bindtap='next' plain='true'   size="mini">  下一步  </button> 
+                <button class="weui-btn  btn" type="primary"  bindtap='next' plain='true'   size="mini"> \t 下一步\t  </button> 
             </cover-view>
             <cover-view class="cover-v-v"> 
                  <cover-image class="btnImg-small" style='margin-top:20px;float:right;margin-right:20rpx;' src="../../images/icon/save.png" bindtap='saveImage' /> 
