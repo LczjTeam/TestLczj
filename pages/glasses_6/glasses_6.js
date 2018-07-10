@@ -26,14 +26,14 @@ Page({
       item.image = "http://jx-lczj.nat300.top/Lczj/goods/" + list[i].t_wears[0].path;
       listInfo.push(item);
     }
- 
+
 
 
 
     var userInfo = options.src_url ;
     this.setData({
       listData : listInfo,  
-      current: listInfo[0].goods,
+      current: wx.getStorageSync("goods"),
       src:userInfo
     });
     console.log(JSON.stringify(this.data.listData, null, 4))

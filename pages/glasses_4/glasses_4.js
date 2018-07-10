@@ -62,13 +62,13 @@ Page({
   }, goes: function (event) {
     var url = event.currentTarget.dataset.url;
     console.log(url);
-
+    console.log(wx.getStorageSync("default-path"));
     wx.request({
       url: 'http://jx-lczj.nat300.top/Lczj/files/wearglasses', //仅为示例，并非真实的接口地址
       data: {
         root:'models',
         url:url,
-        glasses:'C:/OpenCVConfig/glasses/male/glasses_0.png',
+        glasses: wx.getStorageSync("default-path"),
       },
       header: {
         'content-type': 'application/json' // 默认值
