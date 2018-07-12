@@ -8,7 +8,11 @@
       <view class="title">您已顺利的完成了整个试戴过程，请您确认保存？</view>
   </view>  
   <view class="rows">
-      <view class="next">  <button class="weui-btn  btn" type="primary"  bindtap='next' plain='true' bindtap='save'  size="mini">确认保存</button>
+      <view class="next"> 
+       <button   class="weui-btn  btn" type="default"  bindtap='back' plain='true'  size="mini">返回首页</button>\t
+       <button hidden='{{btn_type !=0}}'  class="weui-btn  btn" type="primary"   plain='true' bindtap='save'  size="mini">确认保存</button>
+       \t
+       <button  hidden='{{btn_type !=1}}'  class="weui-btn  btn" type="primary"   plain='true' bindtap='next'  size="mini">立即下单</button>
 </view>
   </view>
 </view>

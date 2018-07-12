@@ -372,7 +372,7 @@ Page({
 
         //设置第一张图片
         wx.setStorageSync("default-path", res.data[0].t_wears[0].path)
-        wx.setStorageSync('goods', res.data[0].goods);
+        wx.setStorageSync('goods', res.data[0].t_goods.goods);
 
         wx.setStorageSync("recommends", res.data)
       }

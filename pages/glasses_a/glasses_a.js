@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    src :""
+    src :"",
+    btn_text:'确认保存',
+    btn_type:0
   },
 
   /**
@@ -71,11 +73,11 @@ Page({
   onShareAppMessage: function () {
   
   },save:function(){
-
+  
     var params = wx.getStorageSync("params");
     var rs = wx.getStorageSync("src_dst")  
   
-    params.selfphoto =  rs.src;
+    params.selfphoto =  "/"+rs.root+"/"+rs.src;
     params.showphoto = rs.dst;
     params.customer = wx.getStorageSync('customer').vip;
     params.goods = wx.getStorageSync('goods');
@@ -92,8 +94,32 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: (res) => {
+        this.setData({ 
+          btn_type: 1
+        })
+        
         console.log(res.data) 
+        wx.showToast({
+          title: '保存成功',
+          icon: 'success',
+          duration: 2000
+        });
+
+        
       }
     })
+  }, back:function(){
+
+    wx.switchTab({
+      url: '../index/index',
+    })
+
+  }, next: function () {
+    wx.showToast({
+      title: '下单',
+      icon: 'success',
+      duration: 2000
+    });
+    
   }
 })

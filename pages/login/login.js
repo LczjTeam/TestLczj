@@ -12,7 +12,8 @@ Page({
     types: '',
     typescolor: '',
     textGet: '获取',
-    vcode: ''  , 
+    vcode: ''  ,
+    disable:'disabled' 
   } ,
   /**
    * 生命周期函数--监听页面加载
@@ -20,6 +21,14 @@ Page({
   onLoad: function (options) {
     this.data.phone = options.phone; 
     console.log(options.phone)
+    if (options.phone=='-1'){
+      this.setData({
+        disable: ''
+      })
+      return;
+    }
+
+
     this.setData({
       phone: options.phone
     })

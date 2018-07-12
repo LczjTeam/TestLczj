@@ -66,5 +66,9 @@ Page({
         console.log(res.errMsg)
       }
     })
+  }, loadTrytowear:function(){
+      wx.navigateTo({
+        url: '../trytowear/trytowear',
+      })
   }
 });

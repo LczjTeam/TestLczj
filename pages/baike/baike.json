@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "眼镜二三事"
+  "navigationBarTitleText": "眼镜二三事",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
 }

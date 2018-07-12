@@ -32,6 +32,7 @@
 </view>    
 <view class="weui-cell weui-cell_input ">
     <view class="weui-cell__hd"> 
+    参数
     </view>
     <view class="weui-cell__bd weui-input"> 
       <view class="weui-label "  style='float:left;margin-left:25px;'>左眼</view><view   style='float:right;margin-right:5px;' class="weui-label">右眼</view>
@@ -44,12 +45,12 @@
     <view class="weui-cell__bd weui-input"> 
       <view class="weui-label "  style='float:left;margin-left:25px;'>
         <picker bindchange="bindLeftPickerChange" value="{{left_eyes.index}}" range="{{left_eyes.types}}">
-            <label style='font-size:15px;'  >{{left_eyes.text}}</label>
+            <label style='font-size:14px;'  >{{left_eyes.text}}</label>
         </picker>
       </view>
       <view   style='float:right;margin-right:5px;' class="weui-label">
         <picker bindchange="bindRightPickerChange" value="{{right_eyes.index}}" range="{{right_eyes.types}}">
-            <label style='font-size:15px;'  >{{right_eyes.text}}</label>
+            <label style='font-size:14px;'  >{{right_eyes.text}}</label>
         </picker>
       </view>
     </view> 
@@ -62,12 +63,12 @@
     <view class="weui-cell__bd weui-input"> 
       <view class="weui-label "  style='float:left;margin-left:25px;'>
         <picker bindchange="bindLeftDsPickerChange" value="{{left_ds.index}}" range="{{left_ds.datas}}">
-           <label style='font-size:15px;'  >{{left_ds.text}}度</label> 
+           <label style='font-size:14px;'  >{{left_ds.text}}度</label> 
         </picker>
       </view>
       <view   style='float:right;margin-right:5px;' class="weui-label">
         <picker bindchange="bindRightDsPickerChange" value="{{right_ds.index}}" range="{{right_ds.datas}}">
-            <label style='font-size:15px;'  >{{right_ds.text}}度</label> 
+            <label style='font-size:14px;'  >{{right_ds.text}}度</label> 
         </picker>
       </view>
     </view> 
@@ -80,12 +81,12 @@
     <view class="weui-cell__bd weui-input"> 
       <view class="weui-label "  style='float:left;margin-left:25px;'>
         <picker bindchange="bindLeftSgPickerChange" value="{{left_sg.index}}" range="{{left_sg.datas}}">
-           <label style='font-size:15px;'  >{{left_sg.text}}度</label> 
+           <label style='font-size:14px;'  >{{left_sg.text}}度</label> 
         </picker>
       </view>
       <view   style='float:right;margin-right:5px;' class="weui-label">
         <picker bindchange="bindRightSgPickerChange" value="{{right_sg.index}}" range="{{right_sg.datas}}">
-            <label style='font-size:15px;'  >{{right_sg.text}}度</label> 
+            <label style='font-size:14px;'  >{{right_sg.text}}度</label> 
         </picker>
       </view>
     </view> 
@@ -97,12 +98,12 @@
     <view class="weui-cell__bd weui-input"> 
       <view class="weui-label "  style='float:left;margin-left:25px;'>
         <picker bindchange="bindLeftZwPickerChange" value="{{left_zw.index}}" range="{{left_zw.datas}}">
-           <label style='font-size:15px;'  >{{left_zw.text}}度</label> 
+           <label style='font-size:14px;'  >{{left_zw.text}}度</label> 
         </picker>
       </view>
       <view   style='float:right;margin-right:5px;' class="weui-label">
         <picker bindchange="bindRightZwPickerChange" value="{{right_zw.index}}" range="{{right_zw.datas}}">
-            <label style='font-size:15px;'  >{{right_zw.text}}度</label> 
+            <label style='font-size:14px;'  >{{right_zw.text}}度</label> 
         </picker>
       </view>
     </view> 

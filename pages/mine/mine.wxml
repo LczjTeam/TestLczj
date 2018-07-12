@@ -62,7 +62,7 @@
     </view>
   </view>
   <view class="line"></view>
-  <view class="item">
+  <view class="item" bindtap="loadTrytowear" >
     <view class="img">
       <image src="/images/icon/glasses.png" style="width:24px;height:24px;"></image>
     </view>

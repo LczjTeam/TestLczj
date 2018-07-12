@@ -9,7 +9,7 @@
         
         
   </view>
-  <view class="usermotto" style='text-align:center;'> 
+  <view class="usermotto" style='text-align:center;'   bindtap='baike1'> 
         <cover-image src="/images/icon/lczj.jpg" style="width:100%;height:220px;margin:0 auto;" bindtap="baike2" ></cover-image>
         
         <cover-view class="cv-2">
