@@ -15,6 +15,7 @@ Page({
   onLoad: function (options) {
 
     console.log(options.left);
+    wx.setStorageSync("left", options.left)
 
     var params = {};
     wx.request({

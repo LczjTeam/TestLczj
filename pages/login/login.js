@@ -12,7 +12,8 @@ Page({
     types: '',
     typescolor: '',
     textGet: '获取',
-    vcode: ''  , 
+    vcode: ''  ,
+    disable:'disabled' 
   } ,
   /**
    * 生命周期函数--监听页面加载
@@ -20,6 +21,14 @@ Page({
   onLoad: function (options) {
     this.data.phone = options.phone; 
     console.log(options.phone)
+    if (options.phone=='-1'){
+      this.setData({
+        disable: ''
+      })
+      return;
+    }
+
+
     this.setData({
       phone: options.phone
     })
@@ -81,8 +90,11 @@ Page({
         url: 'http://jx-lczj.nat300.top/Lczj/customer/login',
         data: {
           phone: this.data.phone,
-          _name: app.globalData.userInfo.nickName+'中文',
-          sex: app.globalData.userInfo.gender+''
+          _name: 'lczj_'+Math.random().toString(36).substr(2),
+          sex:'1',
+          // _name: app.globalData.userInfo.nickName,
+          //sex: app.globalData.userInfo.gender+'',
+          headurl: '' 
         },
         method:"POST",
         header: {

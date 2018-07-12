@@ -1,0 +1,41 @@
+<view class="container1" style='padding:0;'>
+  <view class="info" style='width:100%;margin:0 auto;' hidden="{{currentTab!==0}}">
+    <view class="me_tool">
+       <image src='../../images/icon/flash.png' class="me_smal_img" ></image>
+       <view class="txt-tool" >清理工具</view>
+       <view class="me_btn" bindtap='dels' >删除</view> 
+    </view>
+    <view class="line" style='margin-top:25px;'></view> 
+    <view class="items">
+      <checkbox-group bindchange="checkboxChange">
+        <block wx:for="{{listData}}" wx:key="unique" >
+          <view class="item">
+            <view class="icon">
+              <checkbox   value="{{item.mywear}}" checked="{{item.selected}}" />
+            </view>
+            <view class="pic"  bindtap='showDetail' data-id="{{item.mywear}}">
+             <image src="{{item.showphoto}}" style="width:70px;height:70px;border:1px solid #ffffff;"></image>
+            </view>
+            <view class="order"  bindtap='showDetail' data-id="{{item.mywear}}" >
+              <view class="title">{{item.name}}</view>
+              <view class="desc">
+                <view>详情：{{item.desc}}</view>
+              </view> 
+            </view> 
+          </view>
+          <view class="line"></view>
+        </block>
+      </checkbox-group>
+    </view>
+
+  </view>
+
+  <view class="empty-cart"  hidden="{{currentTab!==1}}">
+  <view class="empty-img">
+    <image src="../../images/icon/empty_cart.png" style='width:100%;height:100%;'></image>
+  </view>
+   <view class="empty-img" style='height:30px;font-size:14px;;text-align:center;margin-top:0px;'>
+       空空如也 ~ ~
+  </view>
+  </view>
+</view>

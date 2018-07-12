@@ -8,19 +8,16 @@ Page({
     },getPhoneNumber: function(e) {
         var that = this;
         if (e.detail.errMsg == 'getPhoneNumber:fail user deny'){
-            wx.showModal({
-                title: '提示',
-                showCancel: false,
-                content: '未授权',
-                success: function (res) {
-                }
-            })
+          wx.redirectTo({
+            url: '../login/login?phone=' + -1,
+          })
+          return;
         } else {
             console.log(e.detail.errMsg)
             console.log(e.detail.iv)
             console.log(e.detail.encryptedData) 
             wx.request({
-                url: 'http://jx-lczj.nat300.top/Lczj/wx/decodePhoneNumber',
+                url:  'http://jx-lczj.nat300.top/Lczj/wx/decodePhoneNumber',
                 data: {
                     sessionId: wx.getStorageSync('session_key'),
                     encryptedData: e.detail.encryptedData,
@@ -39,6 +36,9 @@ Page({
         })
         }
     },showLogins:function(e){ 
+      wx.redirectTo({
+        url: '../login/login?phone=' + -1,
+      })
     },
 
     /**

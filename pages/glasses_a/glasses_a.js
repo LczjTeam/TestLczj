@@ -5,14 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    src :"",
+    btn_text:'确认保存',
+    btn_type:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options.right)
+    wx.setStorageSync("right", options.right);
+
+    var rs = wx.getStorageSync("src_dst");
+    console.log(rs)
+    this.setData({
+      src: (wx.getStorageSync('host') + rs.dst)
+    })
+
   },
 
   /**
@@ -62,5 +72,55 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },save:function(){
+  
+    var params = wx.getStorageSync("params");
+    var rs = wx.getStorageSync("src_dst")  
+  
+    params.selfphoto =  "/"+rs.root+"/"+rs.src;
+    params.showphoto = rs.dst;
+    params.customer = wx.getStorageSync('customer').vip;
+    params.goods = wx.getStorageSync('goods');
+    params.color = wx.getStorageSync('color');
+    params.left = wx.getStorageSync('left');
+    params.right = wx.getStorageSync('right');
+
+    console.log(params,null,4)
+
+    wx.request({
+      url: 'http://jx-lczj.nat300.top/Lczj/mywear/add', //仅为示例，并非真实的接口地址
+      data: params,
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      success: (res) => {
+        this.setData({ 
+          btn_type: 1
+        })
+        
+        console.log(res.data) 
+        wx.showToast({
+          title: '保存成功',
+          icon: 'success',
+          duration: 2000
+        });
+
+        
+      }
+    })
+  }, back:function(){
+
+    wx.switchTab({
+      url: '../index/index',
+    })
+
+  }, next: function () {
+    wx.showToast({
+      title: '下单',
+      icon: 'success',
+      duration: 2000
+    });
+    
   }
 })

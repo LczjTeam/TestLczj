@@ -102,6 +102,7 @@ Page({
         var rs = JSON.parse(res.data);
 
         rs.root = 'upload';
+        console.log(JSON.stringify(rs,null,4))
 
         wx.setStorageSync("src_dst", rs)  
         if (rs.src=='-2'){

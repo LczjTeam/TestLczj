@@ -1,9 +1,9 @@
 <view class="container"  >
   <image style="width:100%;height:100%;" src="../../images/icon/login_bg_1.jpg" />
-
+   
   <view class="login-v"  >
       <view class="ittm hd" >
-        授权确认
+        <image bindtap="bindViewTap" style='height:40px;width:40px;border-radius:50%;' src="../../images/icon/logo.jpg" background-size="cover"></image>  <view >授权确认</view>
       </view>
        <view class="ittm" style="font-size:14px;border-width:0px;">
             为了更好地为您服务，我们需要获取你的手机号，请您确认授权，谢谢！

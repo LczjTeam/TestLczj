@@ -27,7 +27,8 @@ Page({
     autoplay: false,
     interval: 5000,
     duration: 1000,
-    good:{}
+    good:{},
+    color: 0
   },
   imageLoad: function (e) {
     var res = wx.getSystemInfoSync();
@@ -44,6 +45,7 @@ Page({
   onLoad: function (options) {
  
     var goods = wx.getStorageSync('goods');
+    console.log(goods);
     wx.request({
       url: 'http://jx-lczj.nat300.top/Lczj/good/loadById', //仅为示例，并非真实的接口地址
       data: {
@@ -53,9 +55,14 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: (res) => {
-        console.log(res.data)  
+        console.log(res.data)
+
+        wx.setStorageSync('color', res.data.t_colors[0].color);
+
+
         this.setData({
-          good : res.data
+          good : res.data,
+          color: res.data.t_colors[0].color
         }) 
       }
     })
@@ -113,5 +120,12 @@ Page({
     wx.navigateTo({
       url: '../glasses_8/glasses_8',
     })
-  } 
+  }, setVal: function (event) {
+    var id = event.currentTarget.dataset.id;
+    console.log(id);
+    wx.setStorageSync('color', id);
+    this.setData({
+      color: id
+    })
+  }
 })

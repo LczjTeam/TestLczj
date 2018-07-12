@@ -67,5 +67,10 @@ Page({
     wx.navigateTo({
       url: '../baike/baike',
     })
+  },
+  baike1: function () {
+    wx.navigateTo({
+      url: '../baike1/baike1',
+    })
   }
 })

@@ -10,7 +10,7 @@
 
       </view>    
       <view class="ittm-bd" style='width:75%;' >
-          <input type='text' bindinput="bindKeyInput" disabled='disabled' placeholder='输入手机号' value='{{phone}}' style='width:100%;border-bottom:1px solid #dddddd;' />
+          <input type='text' bindinput="bindKeyInput"   disabled="{{disable}}" placeholder='输入手机号' value='{{phone}}' style='width:100%;border-bottom:1px solid #dddddd;' />
       </view> 
       <view class="ittm-ft"  style='width:10%;'>
           <icon type="{{types}}" size="18" color="{{typescolor}}"></icon>

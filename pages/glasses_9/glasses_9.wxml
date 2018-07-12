@@ -4,7 +4,7 @@
 <view class="page__bd">
    <view class="weui-panel__bd">
       <block wx:for="{{listData}}" wx:key="unique" >
-                <navigator url='' class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <navigator  url='../glasses_a/glasses_a?right={{item.t_eyeglass.eyeglass}}'  class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
                     <block wx:if="{{ item.t_attachments[0]!= null && item.t_attachments[0].path!='' }}">
                         <view    class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                             <image class="weui-media-box__thumb" src="http://jx-lczj.nat300.top/Lczj/goods/{{item.t_attachments[0].path}}" />
