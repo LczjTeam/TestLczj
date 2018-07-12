@@ -31,7 +31,7 @@ Page({
 
   }, exit:function(){
     wx.removeStorageSync('customer');
-    wx.navigateTo({
+    wx.redirectTo({ 
       url: '../login/login?phone=-1',
     })
   },setHead:function(){ 
@@ -73,9 +73,9 @@ Page({
                 phone: customer.phone,
                 face:''
               },
-              success: function (res) {
+              success:  (res)=>{
                 var data = res.data
-                var head_url = "http://jx-lczj.nat300.top/Lczj/customerheads/" + res.data.face;
+                var head_url = "http://jx-lczj.nat300.top/Lczj/customerheads/" + res.data;
                 console.log(head_url);
                 this.setData({
                   src: head_url
@@ -98,7 +98,7 @@ Page({
     this.setHeadPic();
   },
   setHeadPic:function(){
-    if (wx.getStorageSync('customer') == null || wx.getStorageSync('customer').face == null) {
+    if (wx.getStorageSync('customer') == null || wx.getStorageSync('customer').vip == null ) {
       var head_url = '../../images/icon/default_head.png';
       console.log(head_url);
       this.setData({

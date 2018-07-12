@@ -90,9 +90,11 @@ Page({
         url: 'http://jx-lczj.nat300.top/Lczj/customer/login',
         data: {
           phone: this.data.phone,
-          _name: app.globalData.userInfo.nickName,
-          sex: app.globalData.userInfo.gender+'',
-          headurl: wx.getStorageSync("head_url") 
+          _name: 'lczj_'+Math.random().toString(36).substr(2),
+          sex:'1',
+          // _name: app.globalData.userInfo.nickName,
+          //sex: app.globalData.userInfo.gender+'',
+          headurl: '' 
         },
         method:"POST",
         header: {

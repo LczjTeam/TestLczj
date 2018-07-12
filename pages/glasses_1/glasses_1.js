@@ -8,11 +8,12 @@ Page({
     state:1,
     listData:[], 
     currentValue: 0,
-  },onShow: function () {
+  }
+  ,onShow: function () {
     console.log(wx.getStorageSync('customer'));
     if (wx.getStorageSync('customer') == null || wx.getStorageSync('customer') == '') {
       wx.redirectTo({
-        url: '../authorize/authorize',
+        url: '../login/login?phone=-1',
       })
       return;
     }
