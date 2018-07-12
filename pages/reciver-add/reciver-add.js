@@ -1,9 +1,5 @@
 // pages/reciver-add/reciver-add.js
 
-var model = require('../../model/model.js')
-
-var show = false;
-var item = {};
 var sorage = wx.getStorageSync("customer");
 var vip = sorage.vip;
 
@@ -13,9 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      item: {
-          show: show
-      },
+      region:[],
       customer:vip,
       consignee:"",
       phone:"",
@@ -25,7 +19,18 @@ Page({
       street:"",
       isdefault:"0"
   },
-    
+  bindRegionChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value,
+    })
+    this.setData({
+      province: this.data.region[0],
+      city: this.data.region[1],
+      county: this.data.region[2]
+    })
+    console.log(this.data.province)
+  },
     bindConsignee:function(e){
         this.setData({
             consignee: e.detail.value
@@ -36,25 +41,7 @@ Page({
             phone:e.detail.value
       })
     },
-    //点击选择城市按钮显示picker-view
-    translate: function (e) {
-        model.animationEvents(this, 0, true,400);
-    },
-    //隐藏picker-view
-    hiddenFloatView: function (e) {
-        model.animationEvents(this, 200, false,400);
-    },
-
-    bindChange: function (e) {
-        model.updateAreaData(this, 1, e);
-        item = this.data.item;
-        this.setData({
-            province: item.provinces[item.value[0]].name,
-            city: item.citys[item.value[1]].name,
-            county: item.countys[item.value[2]].name
-        });
-    },
-
+    
     bindStreet:function(e){
         this.setData({
             street:e.detail.value
@@ -111,9 +98,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function (e) {
-    var that = this;
-    //请求数据
-    model.updateAreaData(that, 0, e);
+
   },
   /**
    * 生命周期函数--监听页面显示

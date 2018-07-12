@@ -1,4 +1,3 @@
-<import src="../../model/model.wxml"/>
 <view class="page" xmlns:wx="http://www.w3.org/ /xhtml">
     <view class="page__bd">
 
@@ -19,12 +18,13 @@
                   <input class="weui-input" bindinput='bindPhone' />
               </view>
           </view>
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
            <view class="weui-cell weui-cell_input"> 
            <view class="weui-cell__hd">
                 <view class="weui-label">省份</view>                                 
             </view>
               <view class="weui-cell__bd">
-                  <input class="weui-input" bindtap="translate" value='{{province}}'/>
+                  <input class="weui-input" value='{{province}}'/>
               </view>
           </view>
            <view class="weui-cell weui-cell_input"> 
@@ -43,7 +43,7 @@
                   <input class="weui-input" value='{{county}}'/>  
               </view>
           </view>
-
+          </picker>
 
             <view class="weui-cell">
                 <view class="weui-cell__hd">
@@ -60,6 +60,6 @@
         <view class="weui-btn-area" style='text-align:center;'>
             <button class="weui-btn" type="primary" bindtap='click' >添加</button>
         </view>
-        <template is="areaData" data="{{...item}}"/>
+
     </view>
 </view>

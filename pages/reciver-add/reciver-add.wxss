@@ -1,3 +1,5 @@
 /* pages/reciver-add/reciver-add.wxss */
-@import '../../model/model.wxss'
+.pickerborder{
+  border: 1;
+}
 
