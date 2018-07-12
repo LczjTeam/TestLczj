@@ -90,8 +90,9 @@ Page({
     wx.request({
       url: 'http://jx-lczj.nat300.top/Lczj/mywear/add', //仅为示例，并非真实的接口地址
       data: params,
+      method: "POST",
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
       success: (res) => {
         this.setData({ 

@@ -90,8 +90,9 @@ Page({
         url: 'http://jx-lczj.nat300.top/Lczj/customer/login',
         data: {
           phone: this.data.phone,
-          _name: app.globalData.userInfo.nickName+'中文',
-          sex: app.globalData.userInfo.gender+''
+          _name: app.globalData.userInfo.nickName,
+          sex: app.globalData.userInfo.gender+'',
+          headurl: wx.getStorageSync("head_url") 
         },
         method:"POST",
         header: {

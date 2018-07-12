@@ -6,7 +6,7 @@
         <image src="{{src}}" bindtap='setHead' style="width:60px;height:60px;border-radius:50%;"></image>
       </view>
       <view class="login">
-         LEAUQEAAN 
+         {{username}} 
       </view>
     </view>
   </view>

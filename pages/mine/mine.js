@@ -3,11 +3,8 @@ Page({
       src:''
   },
   onLoad: function () {
-    var head_url = wx.getStorageSync('head_url');
-    console.log(head_url);
-    this.setData({
-      src: head_url
-    })
+    this.setHeadPic();
+    
 
   }, loadCoupon:function(){
     wx.navigateTo({
@@ -33,11 +30,21 @@ Page({
     })
 
   }, exit:function(){
-    wx.removeStorageSync('phone');
+    wx.removeStorageSync('customer');
     wx.navigateTo({
-      url: '../login/login',
+      url: '../login/login?phone=-1',
     })
   },setHead:function(){ 
+
+    if (this.data.username=='未登录'){
+
+        wx.navigateTo({
+          url: '../authorize/authorize',
+        })
+
+        return;
+    }
+
     var srtype = [];
     wx.showActionSheet({
       itemList: ['拍照','相册'],
@@ -56,9 +63,26 @@ Page({
           success: (res) => {
             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
             var tempImagePath = res.tempFilePaths[0];
-            this.setData({
-              src: tempImagePath
-            })
+
+            var customer = wx.getStorageSync("customer"); 
+            wx.uploadFile({
+              url: 'http://jx-lczj.nat300.top/Lczj/customer/updateFace', //仅为示例，非真实的接口地址
+              filePath: tempImagePath,
+              name: 'file',
+              formData: {
+                phone: customer.phone,
+                face:''
+              },
+              success: function (res) {
+                var data = res.data
+                var head_url = "http://jx-lczj.nat300.top/Lczj/customerheads/" + res.data.face;
+                console.log(head_url);
+                this.setData({
+                  src: head_url
+                })
+                console.log(res.data)
+              }
+            }) 
           }
         })
       },
@@ -70,5 +94,25 @@ Page({
       wx.navigateTo({
         url: '../trytowear/trytowear',
       })
+  },onShow:function(){
+    this.setHeadPic();
+  },
+  setHeadPic:function(){
+    if (wx.getStorageSync('customer') == null || wx.getStorageSync('customer').face == null) {
+      var head_url = '../../images/icon/default_head.png';
+      console.log(head_url);
+      this.setData({
+        src: head_url,
+        username: '未登录'
+      })
+      return;
+
+    }
+    var head_url = "http://jx-lczj.nat300.top/Lczj/customerheads/" + wx.getStorageSync('customer').face;
+    console.log(head_url);
+    this.setData({
+      src: head_url,
+      username: wx.getStorageSync('customer').name
+    }) 
   }
 });

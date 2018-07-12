@@ -108,8 +108,9 @@ Page({
         name: self.data.c_name,
         birthday: self.data.date,
       },
+      method: "POST",
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
       success: (res) => { 
         console.log(res.data) 
