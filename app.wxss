@@ -17,3 +17,10 @@ cover-view{
 text,p,cover-view,view,.page{
     font-family: "Microsoft YaHei";
 }
+
+.weui-cell__hd{
+  font-size:14px;
+}
+.weui-label{
+    font-size:14px;
+}

@@ -4,13 +4,14 @@
     "pages/search/search",
     "pages/mine/mine",
     "pages/baike/baike",
+    "pages/baike1/baike1",
     "pages/encyclopedias/encyclopedias",
     "pages/order/order",
     "pages/coupon/coupon",
     "pages/cart/cart",
     "pages/login/login",
     "pages/authorize/authorize",
-    "pages/trytoware/trytoware",
+    "pages/trytowear/trytowear",
     "pages/reciver/reciver",
     "pages/reciver-add/reciver-add",
     "pages/person/person",
@@ -25,7 +26,9 @@
     "pages/glasses_6/glasses_6",
     "pages/glasses_7/glasses_7",
     "pages/glasses_8/glasses_8",
-    "pages/glasses_9/glasses_9"
+    "pages/glasses_9/glasses_9",
+    "pages/glasses_a/glasses_a",
+    "pages/trytoweardetial/trytoweardetial"
   ],
   "window": {
     "backgroundTextStyle": "#FFFFFF",
