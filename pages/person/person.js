@@ -105,7 +105,7 @@ Page({
       data: {
         phone: self.data.phone,
         sex: self.data.sex,
-        c_name: self.data.c_name,
+        name: self.data.c_name,
         birthday: self.data.date,
       },
       header: {
@@ -114,6 +114,11 @@ Page({
       success: (res) => { 
         console.log(res.data) 
         if(res.data==true){
+          var customer = wx.getStorageSync('customer'); 
+          customer.sex =this.data.sex;
+          customer.name = this.data.c_name;
+          customer.birthday = this.data.date;
+          wx.setStorageSync('customer', customer); 
           wx.showToast({
             title: '修改成功',
             icon:"success",

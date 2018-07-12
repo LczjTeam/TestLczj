@@ -28,7 +28,7 @@
                   <view class="weui-label">生日</view>
               </view>
                 <view class="weui-cell__bd">
-                    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                    <picker mode="date" value="{{date}}" start="1910-09-01" end="2050-09-01" bindchange="bindDateChange">
                         <view class="weui-input">{{date}}</view>
                     </picker>
                 </view>
@@ -36,7 +36,7 @@
         </view>
             
         <view class="weui-btn-area" style='text-align:center;'>
-            <button class="weui-btn" type="primary" plain='true' size='mini'  >确认修改</button>
+            <button class="weui-btn" type="primary" plain='true' size='mini' bindtap='save'  >确认修改</button>
         </view>
     </view>
 </view>
