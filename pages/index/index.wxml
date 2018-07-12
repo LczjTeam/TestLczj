@@ -8,7 +8,7 @@
       </view>
     </block>
     <view style='text-align:center;'>
-     <text class="userinfo-nickname">欢迎来到{{username}}</text>
+     <text class="userinfo-nickname">欢迎使用{{username}}</text>
      </view>
   </view> 
   <view class="usermotto" style='text-align:center;'> 

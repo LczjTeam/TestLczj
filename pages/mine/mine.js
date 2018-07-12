@@ -80,6 +80,8 @@ Page({
                 this.setData({
                   src: head_url
                 })
+                customer.face = res.data;
+                wx.setStorageSync('customer', customer);
                 console.log(res.data)
               }
             }) 

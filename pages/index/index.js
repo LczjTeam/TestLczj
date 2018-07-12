@@ -6,7 +6,7 @@ Page({
   data: {
     motto: '进入我的小程序',
     src: '../../images/icon/logo.jpg',
-    username: '乐潮之镜',
+    username: '智能选镜',
     hasUserInfo: true,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     
