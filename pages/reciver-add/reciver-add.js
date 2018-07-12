@@ -1,30 +1,120 @@
 // pages/reciver-add/reciver-add.js
+
+var model = require('../../model/model.js')
+
+var show = false;
+var item = {};
+var sorage = wx.getStorageSync("customer");
+var vip = sorage.vip;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
-
-
-
+      item: {
+          show: show
+      },
+      customer:vip,
+      consignee:"",
+      phone:"",
+      province:"",
+      city:"",  
+      county:"",
+      street:"",
+      isdefault:"0"
   },
+    
+    bindConsignee:function(e){
+        this.setData({
+            consignee: e.detail.value
+      })
+    },
+    bindPhone:function(e){
+        this.setData({
+            phone:e.detail.value
+      })
+    },
+    //点击选择城市按钮显示picker-view
+    translate: function (e) {
+        model.animationEvents(this, 0, true,400);
+    },
+    //隐藏picker-view
+    hiddenFloatView: function (e) {
+        model.animationEvents(this, 200, false,400);
+    },
+
+    bindChange: function (e) {
+        model.updateAreaData(this, 1, e);
+        item = this.data.item;
+        this.setData({
+            province: item.provinces[item.value[0]].name,
+            city: item.citys[item.value[1]].name,
+            county: item.countys[item.value[2]].name
+        });
+    },
+
+    bindStreet:function(e){
+        this.setData({
+            street:e.detail.value
+        })
+    },
+
+    click:function(e){
+        /*this.setData({
+            address:this.phone+"001"
+        })*/
+        var that = this;
+
+
+        var params= {
+                customer: that.data.customer,
+                consignee: that.data.consignee,
+                phone: that.data.phone,
+                provincename: that.data.province,
+                cityname: that.data.city,
+                countyname: that.data.county,
+                street: that.data.street,
+                isdefault: that.data.isdefault
+            }
+
+        console.log(JSON.stringify(params,null,4)); 
+
+        
+        wx.request({
+            url:"http://localhost:8087/Lczj/address/add",
+            data:params,
+            method:"POST",
+            header: {
+                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+            },
+            success:function (res) {
+                console.log("提交成功!")
+                wx.navigateBack({
+                    delta: 1
+                })
+                }
+        })
+
+
+    },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function (e) {
+    var that = this;
+    //请求数据
+    model.updateAreaData(that, 0, e);
   },
-
   /**
    * 生命周期函数--监听页面显示
    */

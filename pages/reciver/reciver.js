@@ -1,11 +1,14 @@
 // pages/shr/shr.js
+var that = this;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    listData: []
+    listData: [],
+    it:{}
   },
 
   /**
@@ -48,16 +51,69 @@ Page({
     wx.navigateTo({
       url: '../reciver-add/reciver-add',
     })
+        
   },
+    showPage:function(){
+        var that = this;
+        wx.request({
+            url:"http://localhost:8087/Lczj/address/list",
+            data:{},
+            header:{
+                'content-type':'application/x-www-form-urlencoded;charset=utf-8'
+            },
+            success:function (res) {
+                var lists = [];
+
+                for(var i=0;i<res.data.length;i++){
+                    var item = {};
+                    var it = res.data[i];
+                    item.address = it.address;
+                    item.customer = it.customer;
+                    item.consignee = it.consignee;
+                    item.phone = it.phone;
+                    item.street = it.street;
+                    item.province = it.provincename;
+                    item.city = it.cityname;
+                    item.county = it.countyname;
+                    item.isDefault = it.isdefault;
+                    lists.push(item);
+
+                }
+                console.log(lists)
+
+                that.setData({
+                    listData:lists
+                })
+            }
+        })
+    },
+    checkboxChange:function(e){
+      wx.request({
+          url:"http://localhost:8087/Lczj/address/updateDefault",
+          data:{
+              address:e.detail.value[1],
+              customer: wx.getStorageSync("customer").vip,
+          },
+          method:"POST",
+          header: {
+              'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+          },
+          success: (res)=> {
+              console.log("提交成功!");
+              this.showPage();
+              console.log(e.detail.value[0]);
+              console.log(wx.getStorageSync("customer").vip);
+          }
+      })
+        console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    },
 
 
 
 
 
 
-
-
-  /**
+    /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
@@ -68,7 +124,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
+      this.showPage();
   },
 
   /**

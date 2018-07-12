@@ -8,7 +8,7 @@
                 <view class="weui-label">收货人</view>
             </view>
               <view class="weui-cell__bd">
-                      <input class="weui-input" bindinput="bindConsignee"  placeholder=""/>
+                      <input class="weui-input" bindinput="bindConsignee"  value='{{it.consignee}}'/>
               </view>
           </view>
            <view class="weui-cell weui-cell_input"> 
@@ -16,7 +16,7 @@
                 <view class="weui-label">电话</view>
             </view>
               <view class="weui-cell__bd">
-                  <input class="weui-input" bindinput='bindPhone' />
+                  <input class="weui-input" bindinput='bindPhone' value='{{it.phone}}' />
               </view>
           </view>
            <view class="weui-cell weui-cell_input"> 
@@ -50,7 +50,7 @@
                   <view class="weui-label">街道</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="" style="height: 3.3em" bindinput='bindStreet'/>
+                    <textarea class="weui-textarea" placeholder="" style="height: 3.3em" bindblur='bindStreet' value='{{it.street}}'/>
                     <view class="weui-textarea-counter">0/200</view>
                 </view>
             </view>
@@ -58,7 +58,7 @@
 
             
         <view class="weui-btn-area" style='text-align:center;'>
-            <button class="weui-btn" type="primary" bindtap='click' >添加</button>
+            <button class="weui-btn" type="primary" bindtap='click' >保存</button>
         </view>
         <template is="areaData" data="{{...item}}"/>
     </view>

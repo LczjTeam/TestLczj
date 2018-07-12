@@ -1,22 +1,24 @@
 <!--pages/shr.wxml-->
 <view class="page"> 
   <view class="page__bd" style='padding-bottom:50px;'>
-      <view class="line"></view> 
-      <!-- <block wx:for="{{recivers}}" wx:key = 'unique'>   -->
+      <view class="line"></view>
+      <checkbox-group bindchange = "checkboxChange">
+       <block wx:for="{{listData}}" wx:key = 'unique'>
         <view class="addr_itm">
           <view  class="userinfo">
-            <view class="username">刘骞</view>
-            <view class="userphone">15270879965</view>
+            <view class="username">{{item.consignee}}</view>
+            <view class="userphone">{{item.phone}}</view>
           </view>
-          <view class="addrinfo">江西省南昌市青山湖区南京东路235号（南昌大学北区）</view>
+          <view class="addrinfo">{{item.province}}{{item.city}}{{item.county}}{{item.street}}</view>
           <view class="btn_tool">
-            <checkbox checked='true' style='margin-left:10px;font-size:12px;'>设为默认</checkbox>
+            <checkbox    checked="{{item.isDefault  == '1' }}" value="{{item.address}}" style='margin-left:10px;font-size:12px;'>设为默认</checkbox>
             <view class="me_btn" bindtap='dels' >删除</view>
-            <view class="me_btn" bindtap='dels' >编辑</view>
+            <navigator class="me_btn" url="/pages/reciver-edit/reciver-edit?it={{item.address}}">编辑</navigator>
           </view>
         </view>
         <view class="hr"></view>
-      <!-- </block>  -->
+      </block>
+      </checkbox-group>
       <view class="btn_tools">
         <view class="btn_view" bindtap='goAdd' >添加收货人</view>
       </view>
