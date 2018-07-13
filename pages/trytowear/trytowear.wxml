@@ -13,8 +13,8 @@
             <view class="icon">
               <checkbox   value="{{item.mywear}}" checked="{{item.selected}}" />
             </view>
-            <view class="pic"  bindtap='showDetail' data-id="{{item.mywear}}">
-             <image src="{{item.showphoto}}" style="width:70px;height:70px;border:1px solid #ffffff;"></image>
+            <view class="pic" style='height:70px;width:70px;'  bindtap='showDetail' data-id="{{item.mywear}}">
+             <image src="{{item.showphoto}}" model='aspectFit' style='height:100%;width:100%;' ></image>
             </view>
             <view class="order"  bindtap='showDetail' data-id="{{item.mywear}}" >
               <view class="title">{{item.name}}</view>

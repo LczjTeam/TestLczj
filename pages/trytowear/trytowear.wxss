@@ -280,5 +280,12 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   align-items:center;/*垂直居中*/
   justify-content: center;/*水平居中*/
 }
+
+.pic{
+   width:70px;
+   height:70px;
+   padding: 1px;
+   border:1px solid #ffffff; 
+}
  
  

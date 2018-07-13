@@ -5,7 +5,10 @@
           <view class="shop_name">乐潮之镜</view>
           <view class="order_state"></view>
         </view>
-        <view class="items_items">
+        <view class="items_items"  >
+          <view class='image-view' >
+            <image  mode="aspectFit" style='height:100%;' src="http://jx-lczj.nat300.top/Lczj{{ mywear.t_mywear.showphoto }}"></image>
+          </view>
           <view class="items_items_item">
             <view class="img">
               <image style='width:100%;height:100%;' src="http://jx-lczj.nat300.top/Lczj/goods/{{mywear.goodsVo.t_attachments[0].path}}" />
