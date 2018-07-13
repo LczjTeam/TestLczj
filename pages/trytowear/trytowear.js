@@ -161,10 +161,10 @@ Page({
 
            ok = true;
            break;
-        }
-        if(!ok){
-          lists.push(itm);
-        }
+        } 
+      }
+      if (!ok) {
+        lists.push(itm);
       }
     }
 

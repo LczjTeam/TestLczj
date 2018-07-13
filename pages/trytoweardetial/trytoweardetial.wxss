@@ -61,7 +61,13 @@
   background-color: white;
 }
 
-
+.image-view{
+  height: 300px;
+  width: 300px;
+  padding: 5px;
+  margin: 0px auto;
+  border-bottom: 1px solid #F7F7F7;
+}
 .items_items_item{
   height: 70px;
   width: 100%;
