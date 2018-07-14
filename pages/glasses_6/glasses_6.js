@@ -15,8 +15,7 @@ Page({
    */
   onLoad: function (options) {
 
-    var list = wx.getStorageSync("recommends");
-
+    var list = wx.getStorageSync("recommends"); 
 
     var listInfo = [];
     for(var i = 0 ;  i < list.length ;i++){
@@ -118,7 +117,7 @@ Page({
     console.log(id);
     wx.setStorageSync('goods', this.data.listData[id].goods);
     this.setData({
-      current: id
+      current: this.data.listData[id].goods
     })
     var rs = wx.getStorageSync("src_dst");
     console.log(rs)
@@ -139,7 +138,9 @@ Page({
         console.log(res.data)
         rs.dst = res.data;
         wx.setStorageSync("src_dst", rs) 
-        this.data.src = wx.getStorageSync('host') + res.data;
+        this.setData({ 
+          src: wx.getStorageSync('host') + res.data
+        })
       }
     })
       

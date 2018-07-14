@@ -6,7 +6,7 @@
 
           <view class="cover-v-1" >  
            <block wx:for="{{listData}}" wx:key="unique" > 
-            <view data-id='{{index}}' bindtap='setVal' style="width:100%;height:auto;min-height:40px;padding-top:14px;padding-bottom:10px;{{ current == index ? 'border:1px solid #f0f0f0;' :''}}" >
+            <view data-id='{{index}}' bindtap='setVal' style="width:100%;height:auto;min-height:40px;padding-top:14px;padding-bottom:10px;{{ current == item.goods ? 'border:1px solid #f0f0f0;' :''}}" >
               <image    style='width:100%;' mode="widthFix"  src="{{item.image}}"   />
             </view>
            </block>  

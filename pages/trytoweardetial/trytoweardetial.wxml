@@ -7,7 +7,7 @@
         </view>
         <view class="items_items"  >
           <view class='image-view' >
-            <image  mode="aspectFit" style='height:100%;' src="http://jx-lczj.nat300.top/Lczj{{ mywear.t_mywear.showphoto }}"></image>
+            <image  mode="aspectFit" style='height:100%;' data-src="http://jx-lczj.nat300.top/Lczj{{ mywear.t_mywear.showphoto }}"  src="http://jx-lczj.nat300.top/Lczj{{ mywear.t_mywear.showphoto }}"   bindtap="previewImage" ></image>
           </view>
           <view class="items_items_item">
             <view class="img">

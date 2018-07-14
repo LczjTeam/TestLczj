@@ -7,7 +7,7 @@
                 <view class="weui-label">收货人</view>
             </view>
               <view class="weui-cell__bd">
-                      <input class="weui-input" bindinput="bindConsignee"  value='{{it.consignee}}'/>
+                      <input class="weui-input" bindinput="bindConsignee"  value='{{consignee}}'/>
               </view>
           </view>
            <view class="weui-cell weui-cell_input"> 
@@ -15,7 +15,7 @@
                 <view class="weui-label">电话</view>
             </view>
               <view class="weui-cell__bd">
-                  <input class="weui-input" bindinput='bindPhone' value='{{it.phone}}' />
+                  <input class="weui-input" bindinput='bindPhone' value='{{phone}}' />
               </view>
           </view>
           <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
@@ -50,7 +50,7 @@
                   <view class="weui-label">街道</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="" style="height: 3.3em" bindblur='bindStreet' value='{{it.street}}'/>
+                    <textarea class="weui-textarea" placeholder="" style="height: 3.3em" bindinput='bindStreet' value='{{street}}'/>
                     <view class="weui-textarea-counter">0/200</view>
                 </view>
             </view>

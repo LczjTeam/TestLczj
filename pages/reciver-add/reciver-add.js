@@ -70,7 +70,7 @@ Page({
 
         
         wx.request({
-            url:"http://localhost:8087/Lczj/address/add",
+            url:"http://jx-lczj.nat300.top/Lczj/address/add",
             data:params,
             method:"POST",
             header: {

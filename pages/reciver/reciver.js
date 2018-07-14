@@ -56,8 +56,10 @@ Page({
     showPage:function(){
         var that = this;
         wx.request({
-            url:"http://localhost:8087/Lczj/address/list",
-            data:{},
+            url:"http://jx-lczj.nat300.top/Lczj/address/list",
+            data:{
+              customer: wx.getStorageSync("customer").vip,
+            },
             header:{
                 'content-type':'application/x-www-form-urlencoded;charset=utf-8'
             },
@@ -88,11 +90,12 @@ Page({
         })
     },
     checkboxChange:function(e){
+      console.log(e.currentTarget.dataset.id)
       wx.request({
-          url:"http://localhost:8087/Lczj/address/updateDefault",
+          url:"http://jx-lczj.nat300.top/Lczj/address/updateDefault",
           data:{
-              address:e.detail.value[1],
-              customer: wx.getStorageSync("customer").vip,
+            address: e.currentTarget.dataset.id,
+            customer: wx.getStorageSync("customer").vip,
           },
           method:"POST",
           header: {
@@ -104,8 +107,25 @@ Page({
               console.log(e.detail.value[0]);
               console.log(wx.getStorageSync("customer").vip);
           }
-      })
-        console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+      }) 
+    },
+    dels:function(e){   
+      console.log(e.currentTarget.dataset.id)
+      wx.request({
+        url: "http://jx-lczj.nat300.top/Lczj/address/delete",
+        data: {
+          address: e.currentTarget.dataset.id
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+        },
+        success: (res) => {
+          console.log("提交成功!");
+          this.showPage(); 
+        }
+      }) 
+
     },
 
 

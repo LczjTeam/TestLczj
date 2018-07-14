@@ -9,11 +9,15 @@ Page({
    */
   data: {
     region:[],
-    it:{},
     customer: vip,
-    province:"",
-    city:"",
-    county:""
+    consignee: "",
+    address:"",
+    phone: "",
+    province: "",
+    city: "",
+    county: "",
+    street: "",
+    isdefault:""
   },
 
   
@@ -29,7 +33,22 @@ Page({
     })
     console.log(this.data.province)
   },
+  bindConsignee: function (e) {
+    this.setData({
+      consignee: e.detail.value
+    })
+  },
+  bindPhone: function (e) {
+    this.setData({
+      phone: e.detail.value
+    })
+  },
 
+  bindStreet: function (e) {
+    this.setData({
+      street: e.detail.value
+    })
+  },
   click: function (e) {
     /*this.setData({
         address:this.phone+"001"
@@ -38,22 +57,22 @@ Page({
 
 
     var params = {
-      address:that.data.it.address,
+      address:that.data.address,
       customer: that.data.customer,
-      consignee: that.data.it.consignee,
-      phone: that.data.it.phone,
+      consignee: that.data.consignee,
+      phone: that.data.phone,
       provincename: that.data.province,
       cityname: that.data.city,
       countyname: that.data.county,
-      street: that.data.it.street,
-      isdefault: that.data.it.isdefault
+      street: that.data.street,
+      isdefault: that.data.isdefault
     }
 
     console.log(JSON.stringify(params, null, 4));
 
 
     wx.request({
-      url: "http://localhost:8087/Lczj/address/update",
+      url: "http://jx-lczj.nat300.top/Lczj/address/update",
       data: params,
       method: "POST",
       header: {
@@ -77,7 +96,7 @@ Page({
       var it = options.it;
       console.log(it);
       wx.request({
-        url: "http://localhost:8087/Lczj/address/loadByAddress",
+        url: "http://jx-lczj.nat300.top/Lczj/address/loadByAddress",
         data:{
           address:it
         },
@@ -90,7 +109,11 @@ Page({
           console.log(res.data)
           var item= res.data;
           that.setData({
-            it:item,
+            address: item.address, 
+            consignee: item.consignee,
+            phone: item.phone, 
+            street: item.street, 
+            isdefault: item.isdefault,
             province:item.provincename,
             city:item.cityname,
             county:item.countyname
