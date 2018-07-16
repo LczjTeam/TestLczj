@@ -1,0 +1,35 @@
+<!--pages/filter/filter.wxml-->
+<view class='classes'>
+  <view class='basis' >
+      品牌
+  </view>
+  <view class='options'>
+      <view  class="option" wx:for="{{brands}}" wx:key = 'unique'>
+        <view class="button_mini {{item.isChecked?'is_checked':''}}" bindtap='checkboxChange' data-id="{{item.brand}}">{{item.name}}</view>
+      </view>
+  </view> 
+  
+</view>
+<view class='classes'>
+  <view class='basis' >
+      功能
+  </view>
+  <view class='options'>
+    <view  class="option" wx:for="{{efficacys}}" wx:key = 'unique'>
+        <view class="button_mini {{item.isChecked?'is_checked':''}}" bindtap='checkboxChange1' data-id="{{item.efficacy}}">{{item.name}}</view>
+      </view>
+  </view>
+</view>
+<view class='classes'>
+  <view class='basis' >
+      价格
+  </view>
+    <view class='options'>
+  <view  class="option" wx:for="{{prices}}" wx:key = 'unique'>
+        <view class="button_mini {{item.isChecked?'is_checked':''}}" bindtap='checkboxChange2' data-id="{{item.id}}">{{item.low}}{{item.high}}</view>
+      </view>
+  </view>
+</view>
+
+<button class="weui-btn" type="primary" plain="true" bindtap='click'>筛选</button>
+

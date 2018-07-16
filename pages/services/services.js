@@ -1,24 +1,20 @@
-// pages/stores/stores.js
+// pages/services/services.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    listData: [],
-    shop:"../../images/icon/shop.png",
-    tel:"../../images/icon/telphone.png",
-    address:"../../images/icon/address.png"
+    listData:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-
   onLoad: function (options) {
-    var that=this;
+    var that = this;
     wx.request({
-      url: 'http://localhost:8087/Lczj/shops/list',
+      url: 'http://localhost:8087/Lczj/services/list',
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
@@ -28,9 +24,8 @@ Page({
         for (var i = 0; i < res.data.length; i++) {
           var item = {};
           var it = res.data[i];
-          item.name = it.name;
-          item.address = it.address;
-          item.phone = it.phone;
+          item.weixin = it.weixin;
+          item.company = it.company;
           lists.push(item);
 
         }
