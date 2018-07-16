@@ -1,2 +1,34 @@
-<!--pages/stores/stores.wxml-->
-<text>pages/stores/stores.wxml</text>
+<view class="page">
+<!--首页-->  
+<view class="page__bd">
+   <view class="weui-panel__bd">
+      <block wx:for="{{listData}}" wx:key="unique" >
+                <navigator class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+
+                    <view class='block'>
+                        <image class='headimage_title' src='{{shop}}'></image>
+                        <view class="weui-media-box__title">
+                              {{item.name}}
+                        </view>
+                    </view>
+                    <view class='block'>
+                        <image class='headimage' src='{{tel}}'></image>
+                        <view class="weui-media-box__desc"> 
+                              <view>联系方式：{{item.phone}}</view>
+                              
+                        </view>
+                    </view>
+                    <view class='block'>
+                        <image class='headimage' src='{{address}}'></image>
+                        <view class="weui-media-box__desc"> 
+                          <view>地址：{{item.address}}</view>
+                        </view>
+                    </view>
+                        
+                    </view>
+                </navigator>
+      </block> 
+    </view>
+</view>  
+</view>

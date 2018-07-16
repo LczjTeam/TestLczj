@@ -29,7 +29,12 @@ Page({
       url: '../stores/stores',
     })
 
-  }, exit:function(){
+  },services:function(){
+    wx.navigateTo({
+      url: '../services/services',
+    })
+  } ,
+  exit:function(){
     wx.removeStorageSync('customer');
     wx.redirectTo({ 
       url: '../login/login?phone=-1',

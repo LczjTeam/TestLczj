@@ -1,0 +1,10 @@
+<!--pages/services/services.wxml-->
+<view class='all' >
+  <view class='picture_border'>
+    <image class='picture' src='../../images/icon/picture.png'></image>
+  </view>
+  <view wx:for="{{listData}}" wx:key="unique">
+    <view class='mid'>微信号：{{item.weixin}}</view>
+    <view class='mid'>公司：{{item.company}}</view>
+  </view>
+</view>

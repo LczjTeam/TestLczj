@@ -1,0 +1,51 @@
+/* pages/filter/filter.wxss */
+.classes {
+  width: 650rpx;
+  height: 280rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  /* box-shadow: 0px 2px 5px #dfdede; */
+  position: relative; 
+  border-bottom: 2rpx dashed #efeff1;
+  padding: 10px
+
+}
+
+.basis {
+  width: 120rpx;
+  height: 260rpx;
+  border-radius: 50%;
+  margin-left: 0rpx;
+  margin-top: 35rpx;
+  margin-bottom: 10px;
+  /* border:1rpx solid #ffd92e; */
+}
+
+.options {
+  position: absolute;
+  top: 15rpx;
+  left: 150rpx;
+  z-index: 0;
+  height: auto;
+   flex: wrap; 
+}
+.button_mini{
+  border: 2rpx solid black;
+  border-radius:5px;
+  margin: 10rpx;
+  font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px
+}
+.is_checked{
+  background-color: blanchedalmond
+}
+
+.option{ 
+  float: left;
+  margin: 10rpx
+}
+
