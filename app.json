@@ -29,7 +29,8 @@
     "pages/glasses_8/glasses_8",
     "pages/glasses_9/glasses_9",
     "pages/glasses_a/glasses_a",
-    "pages/trytoweardetial/trytoweardetial"
+    "pages/trytoweardetial/trytoweardetial",
+    "pages/orderdetail/orderdetail"
   ],
   "window": {
     "backgroundTextStyle": "#FFFFFF",

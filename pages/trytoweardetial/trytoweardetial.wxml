@@ -1,4 +1,3 @@
-<!-- 我的订单 -->
 <view class="content"> 
     <view class="items">
         <view class="items_top">
@@ -42,7 +41,7 @@
               </view>
             </view>
           </view>
-          <view class="items_items_item">
+          <!-- <view class="items_items_item">
             <view class="img">
               <image style='width:100%;height:100%;' src="http://jx-lczj.nat300.top/Lczj/goods/{{mywear.rightEyeglass.eyeglassVo.t_attachments[0].path}}" />
             </view>
@@ -56,8 +55,7 @@
                  品牌:{{mywear.rightEyeglass.eyeglassVo.t_brand.name}} \t  类别:{{mywear.rightEyeglass.eyeglassVo.t_category.name}}   \t  功能:{{mywear.rightEyeglass.eyeglassVo.t_efficacy.name}}  \t  样式:{{mywear.rightEyeglass.eyeglassVo.t_style.name}} \t  样式:{{mywear.rightEyeglass.eyeglassVo.t_mask.name}}
               </view>
             </view>
-          </view>
-
+          </view> -->
         </view>
         <view class="weui-cell weui-cell_input ">
             <view class="weui-cell__hd"> 参数名称
@@ -66,6 +64,24 @@
               <view class="weui-label "  style='float:left;margin-left:10px;text-align:center;'><label style='font-size:14px;'  >左眼</label></view><view   style='float:right;margin-right:5px;' class="weui-label"><label style='font-size:14px;'  >右眼</label></view>
             </view> 
         </view>
+        <view class="weui-cell weui-cell_input ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">类型</view>
+            </view>
+            <view class="weui-cell__bd weui-input"> 
+              <view class="weui-label "  style='float:left;margin-left:0px;'>
+                <picker bindchange="bindLeftPickerChange" value="{{left_eyes.index}}" range="{{left_eyes.types}}">
+                    <label style='font-size:14px;'  >{{left_eyes.text}}</label>
+                </picker>
+              </view>
+              <view   style='float:right;margin-right:5px;' class="weui-label">
+                <picker bindchange="bindRightPickerChange" value="{{right_eyes.index}}" range="{{right_eyes.types}}">
+                    <label style='font-size:14px;'  >{{right_eyes.text}}</label>
+                </picker>
+              </view>
+            </view> 
+        </view>
+
         <view class="weui-cell weui-cell_input ">
             <view class="weui-cell__hd">
                 <view class="weui-label">度数</view>
@@ -121,7 +137,7 @@
 
 
         <view class="items_top" style='font-size:14px;text-align:right;border-bottom:1px solid #F7F7F7;padding-right:10px;'>
-          共3件商品，合计：<label class="price">￥{{mywear.leftEyeglass.eyeglassVo.t_eyeglass.price + mywear.rightEyeglass.eyeglassVo.t_eyeglass.price + mywear.goodsVo.t_goods.price}}\t\t</label>
+          共3件商品，合计：<label class="price">￥{{mywear.leftEyeglass.eyeglassVo.t_eyeglass.price  + mywear.goodsVo.t_goods.price}}\t\t</label>
         </view>
         <view class="items_top" style='text-align:center;'> 
           <!-- <view class="me_btn" bindtap='buy' >立即购买</view> -->
