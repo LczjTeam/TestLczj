@@ -99,7 +99,7 @@ Page({
           item.selfphoto = "http://jx-lczj.nat300.top/Lczj" + res.data[i].t_mywear.selfphoto;
           item.showphoto = "http://jx-lczj.nat300.top/Lczj" + res.data[i].t_mywear.showphoto;
           item.name = res.data[i].goodsVo.t_goods.name + '(' + res.data[i].goodsVo.t_brand.name + "  " + res.data[i].goodsVo.t_goods.models + ')';
-          item.desc = '场景:' + res.data[i].t_occasion.name + '   脸型:' + res.data[i].t_face.name + '   左眼镜片:' + res.data[i].leftEyeglass.eyeglassVo.t_eyeglass.name + '(' + res.data[i].leftEyeglass.eyeglassVo.t_category.name + ')' + ' \t 右眼镜片:' + res.data[i].rightEyeglass.eyeglassVo.t_eyeglass.name + '(' + res.data[i].leftEyeglass.eyeglassVo.t_category.name + ')';
+          item.desc = '场景:' + res.data[i].t_occasion.name + '   脸型:' + res.data[i].t_face.name + '   左眼镜片:' + res.data[i].leftEyeglass.eyeglassVo.t_eyeglass.name + ' \t 右眼镜片:' + res.data[i].rightEyeglass.eyeglassVo.t_eyeglass.name ;
           list.push(item);
         }
         console.log(JSON.stringify(list))

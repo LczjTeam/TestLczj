@@ -3,7 +3,7 @@
   <view class="page__bd" style='padding-bottom:50px;'>
       <view class="line"></view>
         <block wx:for="{{listData}}" wx:key = 'unique'>
-        <view class="addr_itm">
+        <view class="addr_itm" bindtap='select' data-id="{{item.address}}" >
           <view  class="userinfo">
             <view class="username">{{item.consignee}}</view>
             <view class="userphone">{{item.phone}}</view>
