@@ -136,6 +136,8 @@
         </view>
         <view class="items_top" style='text-align:center;'> 
           <!-- <view class="me_btn" bindtap='buy' >立即购买</view> -->
+           <button   class="weui-btn  btn" type="default"   plain='true' bindtap='relaunch'  size="mini">返回首页</button>
+           \t
           <button   class="weui-btn  btn" type="primary"   plain='true' bindtap='payment'  size="mini">提交订单</button>
         </view>
     </view> 

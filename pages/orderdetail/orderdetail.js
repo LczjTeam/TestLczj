@@ -230,5 +230,9 @@ Page({
         })    
       }
     });
+  }, relaunch:function(){
+    wx.reLaunch({
+      url: '../index/index',
+    })
   }
 })

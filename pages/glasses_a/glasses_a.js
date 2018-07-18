@@ -116,7 +116,7 @@ Page({
 
   }, goDetail:function () {
     console.log("orderdetail")
-    wx.navigateTo({
+    wx.reLaunch({
       url: '../orderdetail/orderdetail',
     })
   }

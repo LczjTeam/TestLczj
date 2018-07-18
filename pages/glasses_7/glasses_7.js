@@ -115,9 +115,9 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
+  }, 
   next:function () {
-    wx.navigateTo({
+    wx.redirectTo({ 
       url: '../glasses_8/glasses_8',
     })
   }, setVal: function (event) {
