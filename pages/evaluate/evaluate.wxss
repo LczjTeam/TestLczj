@@ -1,0 +1,60 @@
+/* pages/evaluate/evaluate.wxss */
+
+/*评价区域  */
+.container{
+  display: block;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px
+}
+.container .evaluate_contant .evaluate_item {
+  font-size: 16px;
+  color: gray;
+  margin-left: 20rpx;
+  margin-top: 30rpx;
+}
+
+/*评价标题  */
+.container .evaluate_contant .evaluate_item .evaluate_title {
+  padding-top: 2px;
+  display: inline-block;
+}
+
+/*评价盒子  */
+.container .evaluate_contant .evaluate_item .evaluate_box {
+  position: absolute;
+  left: 230rpx;
+  width: 100%;
+  display: inline-block;
+}
+
+/*星星评价的每个图片  */
+.container .evaluate_contant .evaluate_item .evaluate_box .star-image {
+  padding-top: 5px;
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  src: "../../images/no-star.png";
+}
+
+/*星星的左边和右边区域<点击左边半个星星，点击右边整个星星>  */
+.container .evaluate_contant .evaluate_item .evaluate_box .star-image .item {
+  padding-top: 5px;
+  position: absolute;
+  top: 0rpx;
+  width: 25rpx;
+  height: 50rpx;
+}
+
+/*按钮  */
+.submit{
+  padding-top: 5px;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  position:fixed; 
+  bottom:0; 
+}
+.high{
+  height: 200px
+}

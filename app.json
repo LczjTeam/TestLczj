@@ -33,9 +33,10 @@
     "pages/orderdetail/orderdetail",
     "pages/services/services",
     "pages/recommend/recommend",
+    "pages/filter/filter",
     "pages/recommend_1/recommend_1",
-    "pages/payok/payok",
-    "pages/orderdetail_1/orderdetail_1"
+    "pages/orderdetail_1/orderdetail_1",
+    "pages/evaluate/evaluate"
   ],
   "window": {
     "backgroundTextStyle": "#FFFFFF",
