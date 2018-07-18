@@ -37,6 +37,9 @@
       <image bindtap='setVal' data-id='{{item.color}}' style='height:30px;width:30px;border-radius:15px;margin-left:10px;{{ color == item.color ? "border:2px solid green;":"" }}'  src="http://jx-lczj.nat300.top/Lczj/colors/{{item.rgb}}"></image>
     </block>
   </view>
+  <view class='pic'>
+    <image mode="widthFix" src='http://jx-lczj.nat300.top/Lczj/goods/{{good.t_goods.detailphoto}}'></image>
+  </view>
   <view class="rows">
       <view class="next">  <button class="weui-btn  btn" type="primary"  bindtap='next' plain='true'   size="mini">确认，下一步</button>
 </view>

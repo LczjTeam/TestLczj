@@ -33,11 +33,19 @@
 }
 
 .next{
-  padding: 5px;
+  padding-top: 5px;
+  width: 100%;
+  background-color: white;
   text-align: center;
+  position:fixed; 
+  bottom:0; 
 }
 .col-4{
   width: 33.33333%;
   height: auto;
   float: left;
+}
+
+.pic{
+  margin-bottom: 30px;
 }
