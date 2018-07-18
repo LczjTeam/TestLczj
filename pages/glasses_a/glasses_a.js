@@ -116,6 +116,7 @@ Page({
 
   }, goDetail:function () {
     console.log("orderdetail")
+    wx.setStorageSync('_back', '1')
     wx.reLaunch({
       url: '../orderdetail/orderdetail',
     })

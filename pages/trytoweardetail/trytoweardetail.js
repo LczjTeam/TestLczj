@@ -344,6 +344,7 @@ Page({
       success: (res) => {
         console.log(res.data)
         wx.setStorageSync("orderdetail", res.data);
+        wx.setStorageSync('_back', '0')
         wx.navigateTo({
           url: '../orderdetail/orderdetail',
         })
