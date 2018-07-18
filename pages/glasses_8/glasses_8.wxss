@@ -75,3 +75,41 @@ icon{
   float: right;
   margin-right: 20px;
 }
+.con_high{
+  height: 30px;
+  padding:0;
+  box-sizing:border-box;
+  border-width: 0px;
+}
+
+.weui-search-bar__form{
+  border-radius: 5px;
+}
+
+.menu{
+  display: block;
+  height: 33px; 
+}
+
+.menu view{
+  font-size: 12px;
+  float:left;
+  width: 33%;
+  height: 33px;
+  border-right: 1px solid #F0F0F0;
+  /* border-bottom: 1px solid #F0F0F0;
+  border-top: 1px solid #F0F0F0; */
+  text-align: center;
+  /*background-color: white; */
+  /* color: #5a5a5a; */
+  line-height: 38px;
+}
+
+.mini{
+  width: 16px;
+  height: 12px;
+  
+}
+.bg{
+  color: orange;
+}

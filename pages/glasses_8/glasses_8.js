@@ -1,11 +1,15 @@
 // pages/glasses_8/glasses_8.js
+
+var ifClick = true;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    listData:[]
+    listData:[],
+    url:"../../images/icon/sort_default.png",
+    isChecked:"1"
   },
 
   /**
@@ -23,6 +27,7 @@ Page({
       },
       success: (res) => {
         console.log(res.data);
+        
          this.setData({
            listData : res.data
          })
@@ -30,6 +35,50 @@ Page({
     })
   },
 
+  gofilter:function(){
+    wx.navigateTo({
+      url: '../filter/filter',
+      success: function(res) {
+        
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  clickAll:function(e){
+    var that = this;
+    this.setData({
+      isChecked: e.currentTarget.dataset.id
+    })
+    console.log(this.data.isChecked)
+    ifClick = !ifClick; 
+    var sort = 0;
+    if (this.data.isChecked=='2'){
+      if (ifClick == true) {
+        sort = 1
+        this.setData({
+          url: "../../images/icon/sort_up.png"
+        })
+      }
+      else {
+        sort = 2;
+        this.setData({
+          url: "../../images/icon/sort_down.png"
+        })
+      }
+    }
+    wx.request({
+      url: '',
+      data: {
+        isChecked:this.data.isChecked,
+        sort:sort
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -41,7 +90,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var sogood = wx.getStorageSync("goods");
+    this.setData({
+      listData:sogood
+    })
   },
 
   /**

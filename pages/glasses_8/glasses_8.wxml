@@ -2,7 +2,22 @@
 <view class="page">
 <!--首页-->  
 <view class="page__bd">
-   <view class="weui-panel__bd">
+    <view class="weui-panel__hd" style='border-width:0px;'>
+     <view class="weui-search-bar con_high" bindtap="gofilter" style='border-width:0px;'>
+          <view class="weui-search-bar__form" >
+            <label class="weui-search-bar__label">
+                          <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索</view>
+            </label>   
+          </view>
+        </view>
+    </view>
+    <view class="weui-panel__bd">
+    <view class='menu'>
+    <view class=" {{isChecked=='1' ? 'bg' : ''}}" bindtap="clickAll" data-id="1" >综合排序</view>
+    <view class=" {{isChecked=='2' ? 'bg' : ''}}" bindtap="clickAll" data-id="2"><image class='mini' mode='scaleToFill' src="{{url}}"></image> 价格排序</view>
+    <view class=" {{isChecked=='3'  ? 'bg' : ''}}" bindtap="clickAll" data-id="3">销量排序</view>
+    </view>
       <block wx:for="{{listData}}" wx:key="unique" >
                 <navigator url='../glasses_9/glasses_9?left={{item.t_eyeglass.eyeglass}}' class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
                     <block wx:if="{{ item.t_attachments[0]!= null && item.t_attachments[0].path!='' }}">

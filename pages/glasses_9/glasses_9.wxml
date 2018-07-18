@@ -1,26 +1,36 @@
-<!-- 眼镜百科 -->
 <view class="page">
-<!--首页-->  
-<view class="page__bd">
-   <view class="weui-panel__bd">
-      <block wx:for="{{listData}}" wx:key="unique" >
-                <navigator  url='../glasses_a/glasses_a?right={{item.t_eyeglass.eyeglass}}'  class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-                    <block wx:if="{{ item.t_attachments[0]!= null && item.t_attachments[0].path!='' }}">
-                        <view    class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                            <image class="weui-media-box__thumb" src="http://jx-lczj.nat300.top/Lczj/goods/{{item.t_attachments[0].path}}" />
-                        </view>
-                    </block>
-                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">
-                              {{item.t_eyeglass.name}}\t\t\t<text class="price">￥{{item.t_eyeglass.price}}</text>
-                        </view>
-                        <view class="weui-media-box__desc"> 
-                              品牌:{{item.t_brand.name}}\t膜层:{{item.t_mask.name}}\t功能:{{item.t_efficacy.name}}
-                              \t设计样式:{{item.t_style.name}}\t设计样式:{{item.t_category.name}}
-                        </view>
-                    </view>
-                </navigator>
-      </block> 
+  <swiper indicator-dots="{{indicatorDots}}"  
+      autoplay="{{autoplay}}"  style="height:{{bannerHeight}}px;" interval="{{interval}}" duration="{{duration}}">  
+    <block wx:for="{{eyeglass.t_attachments}}" wx:key = 'unique'>  
+      <swiper-item style="height:auto;">  
+          <navigator url="{{item.name}}" style="height:auto;" hover-class="navigator-hover">  
+          <image src="http://jx-lczj.nat300.top/Lczj/goods/{{item.path}}" class="slide-image" mode="widthFix" bindload='imageLoad'/>  
+          </navigator>   
+      </swiper-item>  
+    </block>  
+  </swiper>  
+  <view class="rows">
+      <view class="price">￥{{eyeglass.t_eyeglass.price}}</view>
+  </view>  
+  <view class="rows">
+      <view class="title">{{eyeglass.t_eyeglass.name}}({{eyeglass.t_brand.name}})</view>
+  </view>
+  <view class="rows" style='height:auto;'>
+    <view class='info'>
+      <view class="col-4">品牌:{{eyeglass.t_brand.name}}</view> 
+      <view class="col-4">功能:{{eyeglass.t_efficacy.name}}</view> 
+      <view class="col-4">膜层:{{eyeglass.t_mask.name}}</view> 
     </view>
-</view>  
+    <view class='info'>
+      <view class="col-4">镜面样式:{{eyeglass.t_style.name}}</view>
+      <view class="col-4">折射率:{{eyeglass.t_eyeglass.refraction}}</view>    
+    </view>
+  </view>
+  <view class='pic'>
+    <image mode="widthFix" src='http://jx-lczj.nat300.top/Lczj//{{eyeglass.t_eyeglass.detailphoto}}'></image>
+  </view>
+  <view class="rows">
+      <view class="next">  <button class="weui-btn  btn" type="primary"  bindtap='next' plain='true'   size="mini">确认，下一步</button>
+</view>
+  </view>
 </view>
