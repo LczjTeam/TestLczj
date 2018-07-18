@@ -5,30 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      {
-        link: '/pages/index/index',
-        url: '../../images/jpgs/_1.jpg'
-      }, {
-        link: '/pages/logs/logs',
-        url: '../../images/jpgs/_2.jpg'
-      }, {
-        link: '/pages/test/test',
-        url: '../../images/jpgs/_3.jpg'
-      }, {
-        link: '/pages/test/test',
-        url: '../../images/jpgs/_4.jpg'
-      }, {
-        link: '/pages/test/test',
-        url: '../../images/jpgs/_5.jpg'
-      }
-    ], items: [],
+    items: [],
     indicatorDots: true,
     autoplay: false,
     interval: 5000,
     duration: 1000,
-    good: {},
-    color: 0
+    eyeglass: {},
   },
   imageLoad: function (e) {
     var res = wx.getSystemInfoSync();
@@ -43,26 +25,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setStorageSync('left',options.left);
+    wx.setStorageSync('right', options.left);
 
-    var goods = wx.getStorageSync('goods');
-    console.log(goods);
     wx.request({
-      url: 'http://jx-lczj.nat300.top/Lczj/good/loadById', //仅为示例，并非真实的接口地址
+      url: 'http://jx-lczj.nat300.top/Lczj/eyeglass/loadById', //仅为示例，并非真实的接口地址
       data: {
-        code: goods
+        code: options.left
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: (res) => {
         console.log(res.data)
-
-        wx.setStorageSync('color', res.data.t_colors[0].color);
-
-
         this.setData({
-          good: res.data,
-          color: res.data.t_colors[0].color
+          eyeglass: res.data,
         })
       }
     })
@@ -118,7 +95,7 @@ Page({
   },
   next: function () {
     wx.navigateTo({
-      url: '../glasses_8/glasses_8',
+      url: '../glasses_a/glasses_a',
     })
   }, setVal: function (event) {
     var id = event.currentTarget.dataset.id;
