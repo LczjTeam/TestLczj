@@ -9,7 +9,8 @@ Page({
      address:{},
      sum:0,
      voucher: 0,
-     vouchers: 0
+     vouchers: 0,
+     showBack:'0'
   },
 
   /**
@@ -17,6 +18,10 @@ Page({
    */
   onLoad: function (options) {
 
+   
+    this.setData({
+      showBack: wx.getStorageSync('_back')
+    }) 
     //获取优惠券数量
     wx.request({
       url: 'http://jx-lczj.nat300.top/Lczj/customer/loadByPhone',

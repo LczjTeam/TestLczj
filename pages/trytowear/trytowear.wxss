@@ -273,7 +273,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
 }
  
  .empty-img{
-  width: 200px;
+  width: 250px;
   height: 200px;
   margin: 0 auto; 
   color:#707070;
