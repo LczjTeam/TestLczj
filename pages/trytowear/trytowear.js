@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
 
-    this.setDatas();
+ 
    
   },
 
@@ -30,13 +30,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(wx.getStorageSync('customer'));
-    if (wx.getStorageSync('customer') == null || wx.getStorageSync('customer') == '') {
-      wx.redirectTo({ 
-        url: '../authorize/authorize',
-      })
-      return;
-    }
+    this.setDatas();
   },
 
   /**
@@ -52,27 +46,9 @@ Page({
   onUnload: function () {
   
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
   onPullDownRefresh() {
     setTimeout(() => {
       this.setDatas();
@@ -187,7 +163,7 @@ Page({
     var id = e.currentTarget.dataset.id;
     console.log(id); 
     wx.navigateTo({
-      url: '../trytoweardetial/trytoweardetial?mywear='+id,
+      url: '../trytoweardetail/trytoweardetail?mywear='+id,
     })
   }
 })

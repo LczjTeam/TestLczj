@@ -1,0 +1,141 @@
+<view class="content"> 
+    <view class="items">
+        <view class="items_top">
+          <view class="shop_name">订单编号：{{order.t_order.order}}</view>
+          <view class="order_state">{{order.t_order.state == 0 ?'未付款':(order.t_order.state == 1 ?'待收货':( order.t_order.state == 2 ?'待评价':'已完成'))}}</view>
+        </view>
+        <view class="hr"></view>
+
+        <view class="items_items_item" style='padding-left: 0px;padding-right: 0px;  border-bottom:1px solid #F7F7F7;' >
+         
+            <view class="img" style='padding-top:10px;padding-left:25px;'>
+              <image style='width:40px;height:40px;' src="../../images/icon/addrs.png" />
+            </view> 
+            <view class="good_info"   style='  width:60%;'>
+              <view class="title">{{order.t_address.consignee}}</view>
+              <view class="desc">
+                {{order.t_address.phone}}
+              </view> 
+              <view class="desc">
+                {{ order.t_address.provincename + order.t_address.cityname +order.t_address.countyname + order.t_address.street }} 
+              </view> 
+            </view> 
+          
+        </view>
+         <view class="hr"></view>
+      <block wx:for="{{order.mywearVos}}" wx:key="unique" >   
+        <view class="items_items"  > 
+          <view class="items_items_item">
+            <view class="img">
+              <image style='width:100%;height:100%;' src="http://jx-lczj.nat300.top/Lczj/goods/{{item.goodsVo.t_attachments[0].path}}" />
+            </view>
+            <view class="priceandnum">
+              <view class="price">￥{{item.goodsVo.t_goods.price }}</view>
+              <view class="num">1</view> 
+            </view> 
+            <view class="good_info">
+              <view class="title">{{ item.goodsVo.t_goods.name}}</view>
+              <view class="desc">
+                品牌:{{item.goodsVo.t_brand.name}} \t  脸型:{{item.t_face.name}}  \t  场景:{{item.t_occasion.name}} 
+              </view>
+              <view class="desc">  
+                颜色:{{item.t_color.name}}   <image style='height:10px;width:10px;' src="http://jx-lczj.nat300.top/Lczj/colors/{{item.t_color.rgb}}"></image>
+              </view>
+            </view>
+          </view>
+          <view class="items_items_item">
+            <view class="img">
+              <image style='width:100%;height:100%;' src="http://jx-lczj.nat300.top/Lczj/goods/{{item.leftEyeglass.eyeglassVo.t_attachments[0].path}}" />
+            </view>
+            <view class="priceandnum">
+              <view class="price">￥{{item.leftEyeglass.eyeglassVo.t_eyeglass.price}}</view>
+              <view class="num">1</view> 
+            </view> 
+            <view class="good_info">
+              <view class="title">{{item.leftEyeglass.eyeglassVo.t_eyeglass.name}}</view>
+              <view class="desc">
+                 品牌: {{item.leftEyeglass.eyeglassVo.t_brand.name}} \t  功能:{{item.leftEyeglass.eyeglassVo.t_efficacy.name}}  \t  样式:{{item.leftEyeglass.eyeglassVo.t_style.name}} \t  样式:{{item.leftEyeglass.eyeglassVo.t_mask.name}}
+              </view>
+            </view>
+          </view> 
+        </view>
+        <view class="weui-cell weui-cell_input ">
+            <view class="weui-cell__hd"> 参数名称
+            </view>
+            <view class="weui-cell__bd weui-input"> 
+              <view class="weui-label "  style='float:left;margin-left:10px;text-align:center;'><label style='font-size:14px;'  >左眼</label></view><view   style='float:right;margin-right:5px;' class="weui-label"><label style='font-size:14px;'  >右眼</label></view>
+            </view> 
+        </view>
+
+        <view class="weui-cell weui-cell_input ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">类型</view>
+            </view>
+            <view class="weui-cell__bd weui-input"> 
+              <view class="weui-label "  style='float:left;margin-left:0px;'> 
+                  <label style='font-size:14px;'  >{{item.leftEyeglass.t_wearglass.wearglass == 0 ? '近视':'远视' }}</label>  
+              </view>
+              <view   style='float:right;margin-right:5px;' class="weui-label"> 
+                 <label style='font-size:14px;'  >{{item.rightEyeglass.t_wearglass.wearglass == 0 ? '近视':'远视'}}</label>  
+              </view>
+            </view> 
+        </view>
+
+        <view class="weui-cell weui-cell_input ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">度数</view>
+            </view>
+            <view class="weui-cell__bd weui-input"> 
+              <view class="weui-label "  style='float:left;margin-left:0px;'> 
+                  <label style='font-size:14px;'  >{{item.leftEyeglass.t_wearglass.degress}}度</label>  
+              </view>
+              <view   style='float:right;margin-right:5px;' class="weui-label"> 
+                 <label style='font-size:14px;'  >{{item.rightEyeglass.t_wearglass.degress}}度</label>  
+              </view>
+            </view> 
+        </view>
+
+        <view class="weui-cell weui-cell_input ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">散光度数</view>
+            </view>
+            <view class="weui-cell__bd weui-input"> 
+              <view class="weui-label "  style='float:left;margin-left:0px;'>
+                 <label style='font-size:14px;'  >{{item.leftEyeglass.t_wearglass.asdegress}}度</label> 
+               </view>
+              <view   style='float:right;margin-right:5px;' class="weui-label">
+                 <label style='font-size:14px;'  >{{item.rightEyeglass.t_wearglass.asdegress}}度</label> 
+               </view>
+            </view> 
+        </view>
+        <view class="weui-cell weui-cell_input ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">散光轴位</view>
+            </view>
+            <view class="weui-cell__bd weui-input"> 
+              <view class="weui-label "  style='float:left;margin-left:0px;'>
+                 <label style='font-size:14px;'  >{{item.leftEyeglass.t_wearglass.axis}}度</label> 
+               </view>
+              <view   style='float:right;margin-right:5px;' class="weui-label">
+                 <label style='font-size:14px;'  >{{item.rightEyeglass.t_wearglass.axis}}度</label> 
+               </view>
+            </view> 
+        </view>
+        <view class="hr"></view>
+
+        </block>
+
+        <view style='padding-bottom:5px;' hidden='{{order.t_order.voucher==0}}' >
+            <checkbox  disabled   checked="true" style='margin-left:10px;font-size:12px;'>使用优惠券({{order.t_order.voucher}})</checkbox>
+        </view>
+         <view hidden='{{order.t_order.voucher==0}}' class="hr"></view> 
+
+        <view class="items_top" style='font-size:14px;text-align:right;border-top:1px solid #F0F0F0;padding-right:10px;'>
+          共{{order.mywearVos.length}}件商品，合计：<label class="price">{{order.t_order.totalfee}}\t\t</label>
+        </view>
+        <view  class="items_top" style='text-align:center;'> 
+          <button   hidden='{{ hide == 1 }}' class="weui-btn  btn" type="primary"   plain='true' bindtap='home'  size="mini">返回首页</button>
+           <button   hidden='{{ order.t_order.state != 0 }}' class="weui-btn  btn" type="primary"   plain='true' bindtap='pay'  size="mini">立即支付</button>
+        </view>
+    </view> 
+</view>
