@@ -1,34 +1,68 @@
-// pages/glasses_8/glasses_8.js
+// pages/glasses_7/glasses_7.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    listData: []
+    imgUrls: [
+      {
+        link: '/pages/index/index',
+        url: '../../images/jpgs/_1.jpg'
+      }, {
+        link: '/pages/logs/logs',
+        url: '../../images/jpgs/_2.jpg'
+      }, {
+        link: '/pages/test/test',
+        url: '../../images/jpgs/_3.jpg'
+      }, {
+        link: '/pages/test/test',
+        url: '../../images/jpgs/_4.jpg'
+      }, {
+        link: '/pages/test/test',
+        url: '../../images/jpgs/_5.jpg'
+      }
+    ], items: [],
+    indicatorDots: true,
+    autoplay: false,
+    interval: 5000,
+    duration: 1000,
+    good: {},
+    color: 0
   },
-
+  imageLoad: function (e) {
+    var res = wx.getSystemInfoSync();
+    var imgwidth = e.detail.width,
+      imgheight = e.detail.height,
+      ratio = imgwidth / imgheight;
+    this.setData({
+      bannerHeight: res.windowWidth / ratio
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-
   onLoad: function (options) {
 
-    console.log(options.left);
-    wx.setStorageSync("left", options.left)
-
-    var params = {};
+    var goods = wx.getStorageSync('goods');
+    console.log(goods);
     wx.request({
-      url: 'http://jx-lczj.nat300.top/Lczj/eyeglass/list',
-      data: params,
-      method: "POST",
+      url: 'http://jx-lczj.nat300.top/Lczj/good/loadById', //仅为示例，并非真实的接口地址
+      data: {
+        code: goods
+      },
       header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+        'content-type': 'application/json' // 默认值
       },
       success: (res) => {
-        console.log(res.data);
+        console.log(res.data)
+
+        wx.setStorageSync('color', res.data.t_colors[0].color);
+
+
         this.setData({
-          listData: res.data
+          good: res.data,
+          color: res.data.t_colors[0].color
         })
       }
     })
@@ -84,7 +118,14 @@ Page({
   },
   next: function () {
     wx.navigateTo({
-      url: '../glasses_9/glasses_9',
+      url: '../glasses_8/glasses_8',
+    })
+  }, setVal: function (event) {
+    var id = event.currentTarget.dataset.id;
+    console.log(id);
+    wx.setStorageSync('color', id);
+    this.setData({
+      color: id
     })
   }
 })

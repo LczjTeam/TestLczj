@@ -31,5 +31,8 @@
   </view>
 </view>
 
-<button class="weui-btn" type="primary" plain="true" bindtap='click'>筛选</button>
+ <view class="rows">
+      <view class="next">  <button class="weui-btn  btn" type="primary"  bindtap='click' plain='true'   size="mini">筛选</button>
+</view>
+  </view>
 

@@ -177,20 +177,33 @@ Page({
   },
   click:function(e){
     var that=this;
+    var p = that.data.price;
+    console.log(p)
+    var p_high = p.high.replace('~','');
+    var p_low = p.low;
+
+    console.log(that.data.brand)
+    console.log(that.data.efficacy)
+    console.log(p_low)
+    console.log(p_high)
     wx.request({
-      url: '',
+      url: 'http://localhost:8087/Lczj/eyeglass/eyeglasslist',
       data:{
         brand:that.data.brand,
-        price:that.data.prices,
-        efficacy:that.data.efficacy
+        efficacy:that.data.efficacy,
+        low:p_low,
+        high:p_high
       },
       method: "POST",
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
       success: function (res) {
-        console.log("提交成功!")
-
+        console.log(res.data)
+        wx.setStorageSync('goods', res.data);
+        wx.navigateBack({
+          delta: 1,
+        })
       }
     })
   },
