@@ -99,5 +99,75 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  payment: function (event) {
+    var that = this;
+    console.log('去支付按钮点击事件')
+    wx.request({
+      url: 'http://jx-lczj.nat300.top/Lczj/wx/createUnifiedOrder',
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // 当method 为POST 时 设置以下 的header 
+      header: { 
+        'content-type': 'application/x-www-form-urlencoded'
+       },
+      data: { 
+        openid: wx.getStorageInfoSync("openid")
+      },
+      success: function (res) {
+        console.log(res.data)
+
+        if (res.data.prepayId != '') {
+          console.log('微信统一下单接口调用成功 数据包：' + res.data.prepayId);
+          console.log('微信统一下单接口调用成功 订单号：' + res.data.outTradeNo);
+          console.log('调用微信支付接口之前先生成签名')
+          //保存订单号信息
+          var outTradeNo = res.data.outTradeNo;
+          wx.request({
+            url: 'http://192.168.8.50:8080/matouwang/wechat/wechatAppletGolf/generateSignature',
+            method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            // 当method 为POST 时 设置以下 的header 
+            header: { 'content-type': 'application/x-www-form-urlencoded' },
+            data: {
+              prepayId: res.data.prepayId
+            },
+            success: function (paryResult) {
+              console.log(paryResult)
+
+              if (paryResult.data.sign != '') {
+                console.log('微信支付接口之前先生成签名成功')
+                console.log('签名：' + paryResult.data.sign)
+                console.log('随机串：' + paryResult.data.nonceStr)
+                console.log('时间戳：' + paryResult.data.timeStamp)
+                //这个applyId一定要大写 而且签名的参数和调用方法的参数值一定要统一
+                wx.requestPayment({
+                  'appId': '',
+                  'timeStamp': paryResult.data.timeStamp,
+                  'nonceStr': paryResult.data.nonceStr,
+                  'package': paryResult.data.package,
+                  'signType': 'MD5',
+                  'paySign': paryResult.data.sign,
+                  'success': function (paymentRes) {
+                    console.log(paymentRes)
+                    that.setData({
+                      notPay: true,
+                      paySuccess: false,
+                      teamNotPay: true,
+                      button: true,
+                      outTradeNo: outTradeNo,
+                      payDate: new Date()
+                    })
+                  },
+                  'fail': function (error) {
+                    console.log(error)
+                  }
+                })
+              } else {
+                console.log('微信支付接口之前先生成签名失败')
+              }
+            }
+          })
+        }
+      }
+    });
   }
 })
