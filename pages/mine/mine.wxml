@@ -16,11 +16,11 @@
     <view class="img">
       <image src="/images/icon/coin.png" style="width:24px;height:24px;"></image>
     </view>
-    <view class="name">我的积分</view>
+    <view class="name">我的优惠券额</view>
     <view class="detail">
       <view class="weui-cell__ft weui-cell__ft_in-access">
         <!--<view class="weui-badge" style="margin-left: 5px;">1</view>-->
-        <view class="weui-badge" style="margin-left: 5px;color:black;background-color:white;">15</view>
+        <view class="weui-badge" style="margin-left: 5px;color:black;background-color:white;">{{vouchers}}</view>
       </view>
     </view>
   </view> 
@@ -74,22 +74,21 @@
     </view>
   </view>
   
-<view class="line"></view> 
+<!-- <view class="line"></view> 
   <view class="item" bindtap="loadCoupon">
     <view class="img">
       <image src="/images/icon/yhqcard.png" style="width:24px;height:24px;"></image>
     </view>
     <view class="name">优惠券</view>
     <view class="detail">
-      <view class="weui-cell__ft weui-cell__ft_in-access">
-        <!--<view class="weui-badge" style="margin-left: 5px;">1</view>-->
+      <view class="weui-cell__ft weui-cell__ft_in-access"> 
         <view class="weui-badge" style="margin-left: 5px;color:white;background-color:white;"></view>
       </view>
     </view>
-  </view> 
+  </view>  -->
 <view class="line"></view>
  
-   <view class="item" >
+   <view class="item" bindtap="recommend">
     <view class="img">
       <image src="/images/icon/tj.png" style="width:24px;height:24px;"></image>
     </view>

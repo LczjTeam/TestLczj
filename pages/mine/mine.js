@@ -1,12 +1,42 @@
 Page({
   data: {
-      src:''
+      src:'',
+      vouchers:0
   },
   onLoad: function () {
     this.setHeadPic();
     
 
-  }, loadCoupon:function(){
+  },onShow(){
+    wx.request({
+      url: 'http://jx-lczj.nat300.top/Lczj/customer/loadByPhone',
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // 当method 为POST 时 设置以下 的header 
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        phone: wx.getStorageSync("customer").phone
+      },
+      success: (res) => {
+        console.log(res.data);
+        wx.setStorageSync("customer",res.data)
+        this.setData({
+          vouchers: res.data.voucher
+
+        })
+      },
+      'fail': function (error) {
+        console.log(error)
+        wx.showToast({
+          title: "优惠券信息获取失败",
+          icon: none,
+          duration: 2000
+        });
+      }
+    })
+  }
+  , loadCoupon:function(){
     wx.navigateTo({
       url: '../coupon/coupon',
     })
@@ -19,7 +49,13 @@ Page({
       url: '../order/order',
     })
 
-  }, person: function () {
+  },
+  recommend:function(){
+    wx.navigateTo({
+      url: '../recommend/recommend',
+    })
+  }
+  , person: function () {
     wx.navigateTo({
       url: '../person/person',
     })

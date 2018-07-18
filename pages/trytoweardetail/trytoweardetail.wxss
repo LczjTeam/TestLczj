@@ -1,6 +1,6 @@
 .content{
   font-family: "Microsoft YaHei";
-  background-color: #F0F0F0;
+  background-color: #ffffff;
 }
 .menu{
   display: flex;
@@ -61,20 +61,26 @@
   background-color: white;
 }
 
-
+.image-view{
+  height: 300px;
+  width: 300px;
+  padding: 5px;
+  margin: 0px auto;
+  border-bottom: 1px solid #F7F7F7;
+}
 .items_items_item{
-  height: 85px;
+  height: 70px;
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
-  background-color:#fcfcfc; 
+  background-color:#ffffff; 
   padding-top: 5px;
   margin-top: 1px;
   }
 
 .img{ 
-  height: 75px;
-  width: 45px;
+  height: 60px;
+  width: 60px;
   float: left;  
 }
 
@@ -93,7 +99,7 @@
 
 .desc{
   width:100%;
-  height: 40px; 
+  height: 20px; 
   font-size: 12px;
   color:#707070;
 }
@@ -109,6 +115,7 @@
 .price{
   font-size: 13px;
   width: 100%;
+  color: red;
   height: 30px;
   text-align: right;
 

@@ -5,8 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-     order:{},
-     address:{}
+     mywearvo:{},
+     address:{},
+     sum:0,
+     voucher: 0,
+     vouchers: 0
   },
 
   /**
@@ -14,11 +17,42 @@ Page({
    */
   onLoad: function (options) {
 
+    //获取优惠券数量
+    wx.request({
+      url: 'http://jx-lczj.nat300.top/Lczj/customer/loadByPhone',
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // 当method 为POST 时 设置以下 的header 
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        phone: wx.getStorageSync("customer").phone
+      },
+      success:  (res) =>{
+        console.log(res.data);
+        this.setData({
+          vouchers: res.data.voucher
+
+        })
+      },
+      'fail': function (error) {
+        console.log(error)
+        wx.showToast({
+          title: "优惠券信息获取失败",
+          icon: none,
+          duration: 2000
+        });
+      }
+    })
+
+
+    //设置优惠券信息
     wx.removeStorageSync("orderAddress");
     var mywearvo1 =  wx.getStorageSync("orderdetail");
      
     this.setData({
-      mywearvo: mywearvo1,
+      mywearvo: mywearvo1, 
+      sum : mywearvo1.leftEyeglass.eyeglassVo.t_eyeglass.price + mywearvo1.goodsVo.t_goods.price
     })
  
     var params = {};
@@ -63,6 +97,11 @@ Page({
       this.setData({ 
         address: addr
       })
+    } 
+    var order = wx.getStorageSync("order_code");
+    console.log(order == null)
+    if (addr == null) {
+      wx.navigateBack(2)
     }
   },
 
@@ -100,9 +139,29 @@ Page({
   onShareAppMessage: function () {
   
   },
+  setVoucher:function(e){ 
+    var v = this.data.voucher; 
+    var vs = this.data.vouchers; 
+    var sm = this.data.sum; 
+
+    this.setData({
+      voucher: (v == 0 ? 1:0),
+      sum: (v == 0 ? sm - vs : sm + vs )
+    })
+  }
+  ,
   payment: function (event) {
+
+    if (this.data.address == null || this.data.address.address==null ){
+      
+      wx.showToast({
+        title: '请先选择收货人 ~ ~',
+      });
+      return;
+    }
+
     var that = this;
-    console.log('去支付按钮点击事件')
+    console.log(wx.getStorageSync("openid"))
     wx.request({
       url: 'http://jx-lczj.nat300.top/Lczj/wx/createUnifiedOrder',
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
@@ -111,62 +170,64 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
        },
       data: { 
-        openid: wx.getStorageInfoSync("openid")
+        openid: wx.getStorageSync("openid"),
+        address: this.data.address.address,
+        mywear: this.data.mywearvo.t_mywear.mywear,
+        customer: wx.getStorageSync("customer").vip,
+        totalfee: this.data.sum,
+        body : "智能选镜试戴商品",
+        voucher: this.data.vouchers
       },
       success: function (res) {
-        console.log(res.data)
-
-        if (res.data.prepayId != '') {
-          console.log('微信统一下单接口调用成功 数据包：' + res.data.prepayId);
-          console.log('微信统一下单接口调用成功 订单号：' + res.data.outTradeNo);
-          console.log('调用微信支付接口之前先生成签名')
-          //保存订单号信息
-          var outTradeNo = res.data.outTradeNo;
-          wx.request({
-            url: 'http://192.168.8.50:8080/matouwang/wechat/wechatAppletGolf/generateSignature',
-            method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-            // 当method 为POST 时 设置以下 的header 
-            header: { 'content-type': 'application/x-www-form-urlencoded' },
-            data: {
-              prepayId: res.data.prepayId
-            },
-            success: function (paryResult) {
-              console.log(paryResult)
-
-              if (paryResult.data.sign != '') {
-                console.log('微信支付接口之前先生成签名成功')
-                console.log('签名：' + paryResult.data.sign)
-                console.log('随机串：' + paryResult.data.nonceStr)
-                console.log('时间戳：' + paryResult.data.timeStamp)
-                //这个applyId一定要大写 而且签名的参数和调用方法的参数值一定要统一
-                wx.requestPayment({
-                  'appId': '',
-                  'timeStamp': paryResult.data.timeStamp,
-                  'nonceStr': paryResult.data.nonceStr,
-                  'package': paryResult.data.package,
-                  'signType': 'MD5',
-                  'paySign': paryResult.data.sign,
-                  'success': function (paymentRes) {
-                    console.log(paymentRes)
-                    that.setData({
-                      notPay: true,
-                      paySuccess: false,
-                      teamNotPay: true,
-                      button: true,
-                      outTradeNo: outTradeNo,
-                      payDate: new Date()
-                    })
-                  },
-                  'fail': function (error) {
-                    console.log(error)
-                  }
-                })
-              } else {
-                console.log('微信支付接口之前先生成签名失败')
-              }
-            }
-          })
+        if (res.data.code ==null || res.data.code == 500){
+          console.log(res.data.detail) 
+          wx.showToast({
+            title: res.data.detail,
+            icon: none,
+            duration: 2000
+          });
+          return;
         }
+        
+        console.log(res.data.detail) 
+
+        var info = JSON.parse('{' + res.data.detail+'}')
+        console.log('签名：' + info.paySign)
+        console.log('APPID：' + info.appId)
+        console.log('随机串：' + info.nonceStr)
+        console.log('时间戳：' + info.timeStamp)
+        console.log('bao：' + info.package)
+        console.log('order：' + info.order)
+        //这个applyId一定要大写 而且签名的参数和调用方法的参数值一定要统一
+        wx.requestPayment({
+          'appId': info.appId,
+          'timeStamp': info.timeStamp,
+          'nonceStr': info.nonceStr,
+          'package': info.package,
+          'signType': 'MD5',
+          'paySign': info.paySign,
+          'success': function (paymentRes) {
+            
+            wx.showToast({
+              title: "支付成功",
+              icon: "success",
+              duration: 2000
+            });
+
+            wx.redirectTo({
+              url: '../orderdetail_1/orderdetail_1?order='+info.order,
+            })
+            
+          },
+          'fail': function (error) {
+            console.log(error)
+            wx.showToast({
+              title:"支付失败",
+              icon: none,
+              duration: 2000
+            });
+          }
+        })    
       }
     });
   }

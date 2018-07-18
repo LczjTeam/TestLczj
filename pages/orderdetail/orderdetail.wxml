@@ -1,9 +1,10 @@
 <view class="content"> 
     <view class="items">
         <view class="items_top">
-          <view class="shop_name">订单编号：{{order.t_order.order}}</view>
+          <view class="shop_name">订单详情</view>
           <view class="order_state"></view>
-        </view>
+        </view> 
+        <view class="hr"></view> 
         <view class="items_items_item" style='padding-left: 0px;padding-right: 0px;  border-bottom:1px solid #F7F7F7;' >
           <navigator  url='../reciver/reciver?selectable=true' style='padding-left: 10px;' hover-class="weui-cell_active">
             <view class="img" style='padding-top:10px;'>
@@ -26,7 +27,7 @@
             </view>
           </navigator>
         </view>
-         
+       <view class="hr"></view> 
         <view class="items_items"  > 
           <view class="items_items_item">
             <view class="img">
@@ -125,9 +126,13 @@
             </view> 
         </view>
 
-
+        <view hidden='{{vouchers==0}}' class="hr"></view> 
+        <view style='padding-bottom:5px;' hidden='{{vouchers==0}}' >
+            <checkbox    checked="{{ voucher != 0 }}" bindtap='setVoucher'  style='margin-left:10px;font-size:12px;'>使用优惠券({{vouchers}})</checkbox>
+        </view>
+        <view class="hr"></view> 
         <view class="items_top" style='font-size:14px;text-align:right;border-bottom:1px solid #F7F7F7;padding-right:10px;'>
-          共3件商品，合计：<label class="price">￥{{mywearvo.leftEyeglass.eyeglassVo.t_eyeglass.price  + mywearvo.goodsVo.t_goods.price}}\t\t</label>
+          共3件商品，合计：<label class="price">￥{{sum}}\t\t</label>
         </view>
         <view class="items_top" style='text-align:center;'> 
           <!-- <view class="me_btn" bindtap='buy' >立即购买</view> -->

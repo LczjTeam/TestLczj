@@ -100,6 +100,7 @@ Page({
         })
         
         console.log(res.data) 
+        wx.setStorageSync('orderdetail', res.data)
         wx.showToast({
           title: '保存成功',
           icon: 'success',
@@ -115,12 +116,10 @@ Page({
       url: '../index/index',
     })
 
-  }, next: function () {
-    wx.showToast({
-      title: '下单',
-      icon: 'success',
-      duration: 2000
-    });
-    
+  }, goDetail:function () {
+    console.log("orderdetail")
+    wx.navigateTo({
+      url: '../orderdetail/orderdetail',
+    })
   }
 })

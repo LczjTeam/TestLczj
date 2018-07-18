@@ -1,0 +1,7 @@
+<!--pages/services/services.wxml-->
+<view class='all' >
+  <view class='picture_border'>
+    <image class='picture' src='../../images/icon/picture.png'></image>
+  </view> 
+  <view class='mid'>扫码注册，完成推荐</view>  
+</view>
