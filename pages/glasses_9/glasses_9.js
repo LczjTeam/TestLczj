@@ -94,8 +94,8 @@ Page({
 
   },
   next: function () {
-    wx.navigateTo({
-      url: '../glasses_a/glasses_a',
+    wx.redirectTo({
+       url: '../glasses_a/glasses_a',
     })
   }, setVal: function (event) {
     var id = event.currentTarget.dataset.id;

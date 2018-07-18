@@ -24,9 +24,16 @@ Page({
       },
       success: (res) => {
         console.log(JSON.stringify(res.data, null, 4));
-        wx.redirectTo({ 
-          url: '../recommend_1/recommend_1',
-        })
+        if(res.data) {
+          wx.redirectTo({
+              url: '../recommend_1/recommend_1',
+          })
+        }else{
+          wx.showToast({
+            title: '该手机号已被推荐过 ~ ~',
+            duration:2000
+          })
+        }
       }});
   },
   /**

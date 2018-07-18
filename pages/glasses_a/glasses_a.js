@@ -13,9 +13,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log(options.right)
-    wx.setStorageSync("right", options.right);
+  onLoad: function (options) { 
 
     var rs = wx.getStorageSync("src_dst");
     console.log(rs)

@@ -18,7 +18,7 @@ Page({
   onLoad: function (options) {
     var that=this;
     wx.request({
-      url: 'http://localhost:8087/Lczj/shops/list',
+      url: 'http://jx-lczj.nat300.top/Lczj/shops/list',
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },

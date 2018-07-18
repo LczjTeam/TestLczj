@@ -41,7 +41,7 @@ Page({
   showPage: function () {
     var that = this;
     wx.request({
-      url: "http://localhost:8087/Lczj/brand/list",
+      url: "http://jx-lczj.nat300.top/Lczj/brand/list",
       data: {
       },
       header: {
@@ -70,7 +70,7 @@ Page({
       }
     }),
       wx.request({
-      url: "http://localhost:8087/Lczj/efficacy/list",
+      url: "http://jx-lczj.nat300.top/Lczj/efficacy/list",
         data: {
         },
         header: {
@@ -187,7 +187,7 @@ Page({
     console.log(p_low)
     console.log(p_high)
     wx.request({
-      url: 'http://localhost:8087/Lczj/eyeglass/eyeglasslist',
+      url: 'http://jx-lczj.nat300.top/Lczj/eyeglass/eyeglasslist',
       data:{
         brand:that.data.brand,
         efficacy:that.data.efficacy,

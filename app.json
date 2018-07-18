@@ -29,8 +29,13 @@
     "pages/glasses_8/glasses_8",
     "pages/glasses_9/glasses_9",
     "pages/glasses_a/glasses_a",
-    "pages/trytoweardetial/trytoweardetial",
-    "pages/orderdetail/orderdetail"
+    "pages/trytoweardetail/trytoweardetail",
+    "pages/orderdetail/orderdetail",
+    "pages/services/services",
+    "pages/recommend/recommend",
+    "pages/recommend_1/recommend_1",
+    "pages/payok/payok",
+    "pages/orderdetail_1/orderdetail_1"
   ],
   "window": {
     "backgroundTextStyle": "#FFFFFF",
