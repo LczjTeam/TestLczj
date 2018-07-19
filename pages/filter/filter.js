@@ -67,6 +67,12 @@ Page({
         that.setData({
           brands: lists
         })
+      }, fail: (error) => {
+        wx.showToast({
+          title: '品牌数据获取失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     }),
       wx.request({
@@ -91,6 +97,12 @@ Page({
 
           that.setData({
             efficacys: lists
+          })
+        }, fail: (error) => {
+          wx.showToast({
+            title: '功能数据获取失败！',
+            icon: 'none',
+            duration: 2000
           })
         }
       })
@@ -200,9 +212,15 @@ Page({
       },
       success: function (res) {
         console.log(res.data)
-        wx.setStorageSync('goods', res.data);
+        wx.setStorageSync('goodslist', res.data);
         wx.navigateBack({
           delta: 1,
+        })
+      }, fail: (error) => {
+        wx.showToast({
+          title: '数据获取失败！',
+          icon: 'none',
+          duration: 2000
         })
       }
     })

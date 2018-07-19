@@ -84,6 +84,12 @@ Page({
           cks : [],
           currentTab: list.length == 0 ? 1:0
         }) 
+      }, fail: (error) => {
+        wx.showToast({
+          title: '数据获取失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
 

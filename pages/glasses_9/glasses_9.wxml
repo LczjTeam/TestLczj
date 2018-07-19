@@ -27,7 +27,7 @@
     </view>
   </view>
   <view class='pic'>
-    <image mode="widthFix" src='http://jx-lczj.nat300.top/Lczj//{{eyeglass.t_eyeglass.detailphoto}}'></image>
+    <image mode="widthFix" style='width:100%;'  src='http://jx-lczj.nat300.top/Lczj/goods/{{eyeglass.t_eyeglass.detailphoto}}'></image>
   </view>
   <view class="rows">
       <view class="next">  <button class="weui-btn  btn" type="primary"  bindtap='next' plain='true'   size="mini">确认，下一步</button>

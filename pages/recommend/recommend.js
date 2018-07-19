@@ -34,7 +34,14 @@ Page({
             duration:2000
           })
         }
-      }});
+      }, fail: (error) => {
+        wx.showToast({
+          title: '推荐错误！',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      });
   },
   /**
    * 手机号输入提示及检测

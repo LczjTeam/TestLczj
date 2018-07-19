@@ -17,9 +17,16 @@ Page({
    */
   
   onLoad: function (options) {
+
+    var p = wx.getStorageSync("params");
     var params = {};
+    params.degress = p.left_ds > p.right_ds ? p.left_ds : p.right_ds;
+    params.asdegress = p.left_sg > p.right_sg ? p.left_sg : p.right_sg;
+
+    console.log(params.degress)
+    console.log(params.asdegress)
     wx.request({
-      url: 'http://jx-lczj.nat300.top/Lczj/eyeglass/list',
+      url: 'http://jx-lczj.nat300.top/Lczj/eyeglass/eyeglasscommend',
       data: params,
       method: "POST",
       header: {
@@ -31,6 +38,12 @@ Page({
          this.setData({
            listData : res.data
          })
+      }, fail: (error) => {
+        wx.showToast({
+          title: '数据获取失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
   },
@@ -90,10 +103,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var sogood = wx.getStorageSync("goods");
-    this.setData({
-      listData:sogood
-    })
+    
+    var sogood = wx.getStorageSync("goodslist");
+    if(sogood!=null){
+      this.setData({
+        listData:sogood
+      })
+    }
   },
 
   /**

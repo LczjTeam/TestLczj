@@ -83,6 +83,12 @@ Page({
         wx.navigateBack({
           delta: 1
         })
+      },fail:(error) => {
+        wx.showToast({
+          title: '更新失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
 

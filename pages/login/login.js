@@ -106,6 +106,12 @@ Page({
           wx.switchTab({
             url: '../index/index',
           })
+        }, fail: (error) => {
+          wx.showToast({
+            title: '登录失败',
+            icon: 'none',
+            duration: 2000
+          })
         }
       })
 
@@ -188,6 +194,12 @@ Page({
               });
             }
           }, 1000);
+        }, fail: (error) => {
+          wx.showToast({
+            title: '验证码发送失败！',
+            icon: 'none',
+            duration: 2000
+          })
         }
       })
 

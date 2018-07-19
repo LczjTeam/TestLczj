@@ -50,7 +50,7 @@
                   <view class="weui-label">街道</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="" style="height: 3.3em" bindinput='bindStreet'/>
+                    <textarea class="weui-textarea" placeholder=""  style="height: 3.3em" bindinput='bindStreet'/>
                     <view class="weui-textarea-counter">0/200</view>
                 </view>
             </view>
@@ -58,7 +58,7 @@
 
             
         <view class="weui-btn-area" style='text-align:center;'>
-            <button class="weui-btn" type="primary" bindtap='click' >添加</button>
+            <button class="weui-btn" plain='true' size='mini' type="primary" bindtap='click' >确认添加</button>
         </view>
 
     </view>

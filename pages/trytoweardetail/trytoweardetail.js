@@ -260,6 +260,12 @@ Page({
           this.setData({
              mywear : res.data
           }) 
+        }, fail: (error) => {
+          wx.showToast({
+            title: '数据获取失败！',
+            icon: 'none',
+            duration: 2000
+          })
         }
       });
 
@@ -349,6 +355,12 @@ Page({
           url: '../orderdetail/orderdetail',
         })
 
+      }, fail: (error) => {
+        wx.showToast({
+          title: '更新失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
 

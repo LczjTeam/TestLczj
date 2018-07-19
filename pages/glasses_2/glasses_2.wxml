@@ -32,10 +32,10 @@
 </view>    
 <view class="weui-cell weui-cell_input ">
     <view class="weui-cell__hd"> 
-    参数
+    参数名称
     </view>
     <view class="weui-cell__bd weui-input"> 
-      <view class="weui-label "  style='float:left;margin-left:25px;'>左眼</view><view   style='float:right;margin-right:5px;' class="weui-label">右眼</view>
+      <view class="weui-label "  style='float:left;margin-left:0px;text-align:center;'>左眼</view><view   style='float:right;margin-right:5px;' class="weui-label">右眼</view>
     </view> 
 </view>
 <view class="weui-cell weui-cell_input ">
@@ -43,7 +43,7 @@
         <view class="weui-label">类型</view>
     </view>
     <view class="weui-cell__bd weui-input"> 
-      <view class="weui-label "  style='float:left;margin-left:25px;'>
+      <view class="weui-label "  style='float:left;margin-left:0px;text-align:center;'>
         <picker bindchange="bindLeftPickerChange" value="{{left_eyes.index}}" range="{{left_eyes.types}}">
             <label style='font-size:14px;'  >{{left_eyes.text}}</label>
         </picker>
@@ -61,7 +61,7 @@
         <view class="weui-label">度数</view>
     </view>
     <view class="weui-cell__bd weui-input"> 
-      <view class="weui-label "  style='float:left;margin-left:25px;'>
+      <view class="weui-label "  style='float:left;margin-left:0px;text-align:center;'>
         <picker bindchange="bindLeftDsPickerChange" value="{{left_ds.index}}" range="{{left_ds.datas}}">
            <label style='font-size:14px;'  >{{left_ds.text}}度</label> 
         </picker>
@@ -79,7 +79,7 @@
         <view class="weui-label">散光度数</view>
     </view>
     <view class="weui-cell__bd weui-input"> 
-      <view class="weui-label "  style='float:left;margin-left:25px;'>
+      <view class="weui-label "  style='float:left;margin-left:0px;text-align:center;'>
         <picker bindchange="bindLeftSgPickerChange" value="{{left_sg.index}}" range="{{left_sg.datas}}">
            <label style='font-size:14px;'  >{{left_sg.text}}度</label> 
         </picker>
@@ -96,7 +96,7 @@
         <view class="weui-label">散光轴位</view>
     </view>
     <view class="weui-cell__bd weui-input"> 
-      <view class="weui-label "  style='float:left;margin-left:25px;'>
+      <view class="weui-label "  style='float:left;margin-left:0px;text-align:center;'>
         <picker bindchange="bindLeftZwPickerChange" value="{{left_zw.index}}" range="{{left_zw.datas}}">
            <label style='font-size:14px;'  >{{left_zw.text}}度</label> 
         </picker>

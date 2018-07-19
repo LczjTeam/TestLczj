@@ -85,6 +85,12 @@ Page({
                 that.setData({
                     listData:lists
                 })
+            },fail:(error)=>{
+                wx.showToast({
+                  title: '获取失败！',
+                  icon:'none',
+                  duration:2000
+                })
             }
         })
     },
@@ -105,6 +111,12 @@ Page({
               this.showPage();
               console.log(e.detail.value[0]);
               console.log(wx.getStorageSync("customer").vip);
+          }, fail: (error) => {
+            wx.showToast({
+              title: '设置失败！',
+              icon: 'none',
+              duration: 2000
+            })
           }
       }) 
     },
@@ -166,6 +178,8 @@ Page({
    */
   onPullDownRefresh: function () {
     this.showPage();
+    wx.stopPullDownRefresh();
+
   },
 
   /**

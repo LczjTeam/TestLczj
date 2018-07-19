@@ -49,7 +49,7 @@
       </view>
     </view>
   </view>
-  <view class="line"></view>
+  <!-- <view class="line"></view>
   <view class="item" bindtap='order'>
     <view class="img">
       <image src="/images/icon/order.png" style="width:24px;height:24px;"></image>
@@ -60,7 +60,7 @@
        <view class="weui-badge" style="margin-left: 5px;color:white;background-color:white;"></view>
       </view>
     </view>
-  </view>
+  </view> -->
   <view class="line"></view>
   <view class="item" bindtap="loadTrytowear" >
     <view class="img">

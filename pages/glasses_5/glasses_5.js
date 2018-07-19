@@ -152,6 +152,12 @@ Page({
         }, 2000)
         console.log(res);
         
+      }, fail: (error) => {
+        wx.showToast({
+          title: '推荐失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
   } ,reset(){

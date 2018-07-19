@@ -141,6 +141,12 @@ Page({
         this.setData({ 
           src: wx.getStorageSync('host') + res.data
         })
+      }, fail: (error) => {
+        wx.showToast({
+          title: '试戴失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
       

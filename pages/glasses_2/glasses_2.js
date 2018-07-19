@@ -279,6 +279,12 @@ Page({
           listData: lists,
           currentFace: lists[0].face
         })
+      }, fail: (error) => {
+        wx.showToast({
+          title: '数据获取失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
 
@@ -352,7 +358,7 @@ Page({
     params.right_sg = wx.getStorageSync('right_sg')
     params.right_zw = wx.getStorageSync('right_zw')
 
-    wx.setStorageSync("params", params)
+    wx.setStorageSync("params", params) 
 
     console.log(JSON.stringify(params,null,4))
 
@@ -360,30 +366,41 @@ Page({
      * 推荐镜框
      */
     wx.request({
-      url: 'http://jx-lczj.nat300.top/Lczj/good/list',
+      url: 'http://jx-lczj.nat300.top/Lczj/good/recommend',
       data: params,
       method: "POST",
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
-      success: (res) => {
+      success: (res) => { 
         console.log(res.data)  
+        if (res.data==null || res.data.lenght == 0 ){
+          wx.showToast({
+            title: '未找到适合你的镜框 ~ ~ '
+            ,duration:2000
+          })
+          return;
+        }
         console.log(res.data[0].t_wears[0].path)
         console.log(res.data[0].t_goods.goods)
+
+
         //设置第一张图片
         wx.setStorageSync("default-path", res.data[0].t_wears[0].path)
         wx.setStorageSync('goods', res.data[0].t_goods.goods);
-
         wx.setStorageSync("recommends", res.data)
+
+        wx.navigateTo({
+          url: '../glasses_3/glasses_3',
+        })
+      }, fail: (error) => {
+        wx.showToast({
+          title: '数据获取失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
-    })
-
-
-
-
-    wx.navigateTo({
-      url: '../glasses_3/glasses_3',
-    })
+    }) 
   },
   setSex: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.currentTarget.id);

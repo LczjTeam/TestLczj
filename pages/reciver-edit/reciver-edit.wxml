@@ -58,7 +58,7 @@
 
             
         <view class="weui-btn-area" style='text-align:center;'>
-            <button class="weui-btn" type="primary" bindtap='click' >保存</button>
+            <button class="weui-btn" plain='true' size='mini' type="primary" bindtap='click' >确认保存</button>
         </view>
     </view>
 </view>

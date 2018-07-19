@@ -7,7 +7,8 @@
     <view class="{{currentTab==3?'select':'default'}}" data-current="3" bindtap="switchNav">已完成</view>
   </view> 
   <view style='height:45px;width:100%;'></view>
-  <block wx:for="{{listData}}"   wx:key="unique">
+
+  <block wx:for="{{ listData[currentTab] }}" wx:key="unique">
     <view class="items">
         <view class="items_top">
           <view class="shop_name">订单编号：{{item.order.order}}</view>
@@ -15,7 +16,7 @@
         </view>
         <view class="items_items">
           <block wx:for="{{item.items}}"  wx:key="unique" wx:for-item="itm"> 
-            <view class="items_items_item">
+            <view class="items_items_item"  >
               <view class="img">
                 <image style='width:100%;height:100%;' src="{{itm.showphoto}}" />
               </view>
@@ -41,8 +42,9 @@
         </view>
     </view>
   </block>
+  
 
-  <view wx:if="{{listData.length == 0 }}" class="empty-cart"  >
+  <view wx:if="{{listData[currentTab].length == 0 }}" class="empty-cart"  >
     <view class="empty-img">
       <image src="../../images/icon/no-order.png" style='width:100%;height:100%;'></image>
     </view>

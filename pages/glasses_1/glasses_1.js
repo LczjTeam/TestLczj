@@ -54,6 +54,12 @@ Page({
           listData: lists,
           currentValue: lists[0].occasion
         })
+      }, fail: (error) => {
+        wx.showToast({
+          title: '数据获取失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
 
