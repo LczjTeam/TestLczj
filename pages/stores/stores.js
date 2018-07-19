@@ -14,7 +14,6 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-
   onLoad: function (options) {
     var that=this;
     wx.request({
@@ -28,6 +27,7 @@ Page({
         for (var i = 0; i < res.data.length; i++) {
           var item = {};
           var it = res.data[i];
+          item.shop=it.shop;
           item.name = it.name;
           item.address = it.address;
           item.phone = it.phone;
