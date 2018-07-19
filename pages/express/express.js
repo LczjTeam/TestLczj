@@ -1,4 +1,7 @@
 // pages/exprss/exprss.js
+
+var util = require('../../utils/util.js')
+
 Page({
 
   /**
@@ -47,7 +50,100 @@ Page({
    */
   onLoad: function (options) {
 
-    
+    var that = this;
+    console.log()
+    var expCode = options.express.slice(options.express.indexOf('(') + 1, options.express.indexOf(')'));
+    console.log(expCode)  
+    console.log(options.expressid)   
+
+
+    //查物流
+    //快递公司和，快递单号
+    var logistics = [expCode, options.expressid]
+    //数据内容
+    var RequestData = "{'OrderCode':'','ShipperCode':'" + logistics[0] + "','LogisticCode':'" + logistics[1] + "'}"
+    //utf-8编码的数据内容
+    console.log(RequestData)
+    var RequestDatautf = encodeURI(RequestData)
+    console.log("RequestDatautf:" + RequestDatautf)
+    //签名
+    console.log(RequestData + '4c81f84b-53cc-4b6d-bbba-5b7fcc3dd73c')
+    var DataSign = encodeURI(util.Base64((util.md5(RequestData + '4c81f84b-53cc-4b6d-bbba-5b7fcc3dd73c'))))
+    console.log("DataSign:" + DataSign)
+    if (logistics != null) {
+      wx.request({
+        url: 'https://api.kdniao.com/Ebusiness/EbusinessOrderHandle.aspx',
+        data: {
+          //数据内容(进行过url编码)
+          'RequestData': RequestDatautf,
+          //电商ID
+          'EBusinessID': '1360386',
+          //请求指令类型：1002
+          'RequestType': '1002',
+          //数据内容签名把（请求内容（未编码）+ApiKey）进行MD5加密，然后Base64编码，最后进行URL（utf-8）编码
+          'DataSign': DataSign,
+          //请求、返回数据类型： 2-json；
+          'DataType': '2',
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+              //   success: (res) => { 
+          console.log(res.data)
+
+          var list = [];
+          for (var i = res.data.Traces.length -1; i >= 0; i--) {
+            list.push(res.data.Traces[i]);
+          }
+
+          that.setData({
+            wuliu: {
+              LogisticCode: options.expressid,
+              ShipperCode: options.express,
+              Traces :list,
+              State: res.data.State
+            }
+          })
+          
+        }
+      })
+    }
+
+
+    // wx.request({
+    //   url: 'http://jx-lczj.nat300.top/Lczj/express/loadByInfo', //仅为示例，并非真实的接口地址
+    //   data: {
+    //     expCode: expCode, 
+    //     expNo: options.expressid
+    //   },
+    //   method: "POST",
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+    //   },
+    //   success: (res) => { 
+    //     console.log(res.data)
+ 
+    //     var list = [];
+    //     for (var i = res.data.Traces.length -1; i >= 0; i--) {
+    //       list.push(res.data.Traces[i]);
+    //     }
+
+
+    //     this.setData({
+    //       wuliu: {
+    //         Traces :list
+    //       }
+    //     })
+    //   }, fail: (error) => {
+    //     wx.showToast({
+    //       title: '数据获取失败！',
+    //       icon: 'none',
+    //       duration: 2000
+    //     })
+    //   }
+    // })
+
 
   },
 

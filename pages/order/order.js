@@ -147,9 +147,20 @@ Page({
     var sum = e.currentTarget.dataset.price; 
     wxutil.wxpay(order,sum); 
   }, express: function (e) {
-    var order = e.currentTarget.dataset.id;
+    var express = e.currentTarget.dataset.express;
+    var expressid = e.currentTarget.dataset.expressid;
+    
+    if (expressid == null ||  express==null || express == '' || express == 'null' || expressid == '' || expressid == 'null') {
+      wx.showToast({
+        title: '该订单暂无物流信息',
+        icon:'none',
+        duration:2000
+      })
+      return;
+    }
+
     wx.navigateTo({
-      url: '../express/express',
+      url: '../express/express?express=' + express + '&expressid=' + expressid,
     })
   }
 })

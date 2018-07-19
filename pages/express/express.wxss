@@ -14,7 +14,7 @@
 }
 
 .logistics{
-  margin-top: 70rpx;
+  margin-top: 50rpx;
   font-size: 28rpx;  
   height:50px;
   width: auto;
@@ -32,7 +32,7 @@
 .logistics_centent{
   position: absolute;
   left: 100rpx;
-  font-size: 24rpx;
+  font-size: 26rpx;
   padding-right: 40rpx;
   height: auto;
   color: #666

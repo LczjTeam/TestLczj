@@ -37,7 +37,7 @@
         <view class="items_top">  
           <view  data-price='{{item.order.totalfee}}'  data-id="{{item.order.order}}" wx:if="{{ item.order.state == 0 }}" class="me_btn" bindtap='pay' >立即支付</view>
           <view   data-id="{{item.order.order}}"  wx:if="{{ item.order.state != 1 }}" class="me_btn" bindtap='del' >删除订单</view> 
-          <view   data-id="{{item.order.order}}"  wx:if="{{ item.order.state == 1 }}" class="me_btn" bindtap='express' >查看物流</view> 
+          <view   data-express="{{item.order.express}}"  data-expressid="{{item.order.expressid}}"   wx:if="{{ item.order.state == 1 }}" class="me_btn" bindtap='express' >查看物流</view> 
           <view  data-id="{{item.order.order}}" wx:if="{{ item.order.state == 2 }}"  class="me_btn" bindtap='evaluate' >评价</view>
           <view  class="me_btn" data-id="{{item.order.order}}" bindtap='detail' >查看详情</view>
         </view>
