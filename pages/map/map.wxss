@@ -1,4 +1,4 @@
-/* pages/map/map.wxss */
+ /* pages/map/map.wxss 
 .headimage{
   width: 40rpx;
   height: 40rpx;
@@ -15,7 +15,7 @@
   margin-left: 0rpx;
   margin-top: 5rpx;
   margin-right:5px 
-}
+} */
 .block{
   display: flex;
   flex-direction: row;
