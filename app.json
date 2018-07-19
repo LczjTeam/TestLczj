@@ -36,7 +36,8 @@
     "pages/services/services",
     "pages/recommend/recommend",
     "pages/recommend_1/recommend_1", 
-    "pages/orderdetail_1/orderdetail_1"
+    "pages/orderdetail_1/orderdetail_1",
+    "pages/map/map"
   ],
   "window": {
     "backgroundTextStyle": "#FFFFFF",

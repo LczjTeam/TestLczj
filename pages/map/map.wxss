@@ -1,0 +1,28 @@
+ /* pages/map/map.wxss 
+.headimage{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  margin-left: 0rpx;
+  margin-top: 15rpx;
+  margin-right: 5px
+}
+
+.headimage_title{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-left: 0rpx;
+  margin-top: 5rpx;
+  margin-right:5px 
+} */
+.block{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end
+}
+
+.page-section-gap{
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}

@@ -3,7 +3,7 @@
 <view class="page__bd">
    <view class="weui-panel__bd">
       <block wx:for="{{listData}}" wx:key="unique" >
-                <navigator class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <navigator class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" url='../map/map?shop={{item.shop}}'>
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
 
                     <view class='block'>
