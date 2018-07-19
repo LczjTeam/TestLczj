@@ -17,6 +17,7 @@
     "pages/reciver-edit/reciver-edit",
     "pages/person/person",
     "pages/stores/stores",
+    "pages/filter/filter",
     "pages/baikedetail/baikedetail",
     "pages/glasses_0/glasses_0",
     "pages/glasses_1/glasses_1",
@@ -33,10 +34,8 @@
     "pages/orderdetail/orderdetail",
     "pages/services/services",
     "pages/recommend/recommend",
-    "pages/filter/filter",
-    "pages/recommend_1/recommend_1",
-    "pages/orderdetail_1/orderdetail_1",
-    "pages/evaluate/evaluate"
+    "pages/recommend_1/recommend_1", 
+    "pages/orderdetail_1/orderdetail_1"
   ],
   "window": {
     "backgroundTextStyle": "#FFFFFF",
@@ -63,10 +62,10 @@
         "selectedIconPath": "images/bar/eye_01.png"
       },
       {
-        "pagePath": "pages/cart/cart",
-        "text": "购物车",
-        "iconPath": "images/bar/cart_00.png",
-        "selectedIconPath": "images/bar/cart_01.png"
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "images/bar/order_00.png",
+        "selectedIconPath": "images/bar/order_01.png"
       },
       {
         "pagePath": "pages/mine/mine",
