@@ -110,6 +110,13 @@ Page({
           });
         }
       }});
+  },
+  evaluate:function(e){
+    var id = e.currentTarget.dataset.id;
+    console.log(id)
+    wx.navigateTo({
+      url: '../evaluate/evaluate?order='+id,
+    })
   }
 
   ,pay:function(e){
