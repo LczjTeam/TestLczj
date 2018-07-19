@@ -12,7 +12,8 @@ Page({
     halfSrc: '../../images/icon/half-star.png',
     score: 3,
     scores: [3, 3, 3],
-    evalute:""
+    evalute:"",
+    order:""
   },
   InputEvalute:function(e){
     this.setData({
@@ -30,7 +31,7 @@ Page({
       this.setData({
         scores: this.data.scores,
         score: score
-      })
+      })      
 
   },
   //点击右边,整颗星
@@ -49,9 +50,9 @@ Page({
     console.log('评价内容：' + this.data.evalute)
     
     wx.request({
-      url: '',
+      url: 'http://jx-lczj.nat300.top/Lczj/order/update1',
       data:{
-        order:"",
+        order:this.data.order,
         goodsstar: this.data.scores[0]*2,
         servicestar: this.data.scores[1]*2,
         expressstar: this.data.scores[2]*2,
@@ -61,13 +62,23 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
+      success: function (res) {
+        console.log("提交成功!")
+        wx.navigateBack({
+          delta: 1
+        })
+      }
     })
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options.order)
+    this.setData({
+      order: options.order
+    })
   },
 
   /**
