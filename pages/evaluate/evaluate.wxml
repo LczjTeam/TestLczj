@@ -1,0 +1,34 @@
+<!--pages/evaluate/evaluate.wxml-->
+<view class='container'>
+    <view class='evaluate_contant'>
+    <!--外层循环控制有几个评价条目  -->
+      <block wx:for='{{evaluate_contant}}' wx:key='' wx:for-index='idx'>
+        <view class='evaluate_item'>
+          <view class='evaluate_title'>{{item}}:</view>
+
+          <!--星星评价  -->
+          <view class='evaluate_box'>
+          <!--内层循环展示每个评价条目的星星  -->
+            <block wx:for="{{stars}}" wx:key=''>
+              <image class="star-image" style="left: {{item*80}}rpx" src="{{scores[idx] > item ?(scores[idx]-item == 0.5?halfSrc:selectedSrc) : normalSrc}}">
+                <view class="item" style="left:0rpx" data-score="{{item + 0.5}}" data-idx='{{idx}}' bindtap="selectLeft"></view>
+                <view class="item" style="left:20rpx" data-score="{{item + 1}}" data-idx='{{idx}}' bindtap="selectRight"></view>
+              </image>
+            </block>
+          </view>         
+        </view>
+      </block>
+      <view class='evaluate_item'>
+      <view class='evaluate_title'>评价</view>
+      </view>
+      <view class="weui-cells weui-cells_after-title high">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea"  placeholder="请输入文本" bindinput='InputEvalute' style="height: 3.3em"/>
+                </view>
+            </view>
+      </view>
+      </view>
+</view>
+ <view class="submit">  <button class="weui-btn  btn" type="primary"  bindtap='submit_evaluate' plain='true'   size="mini">确认，下一步</button>
+      </view>
