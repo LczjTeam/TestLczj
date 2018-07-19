@@ -41,6 +41,12 @@ Page({
         this.setData({
           eyeglass: res.data,
         })
+      }, fail: (error) => {
+        wx.showToast({
+          title: '数据获取失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
   },

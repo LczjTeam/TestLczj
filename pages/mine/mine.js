@@ -30,7 +30,7 @@ Page({
         console.log(error)
         wx.showToast({
           title: "优惠券信息获取失败",
-          icon: none,
+          icon: 'none',
           duration: 2000
         });
       }

@@ -282,8 +282,8 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
 }
 
 .pic{
-   width:70px;
-   height:70px;
+   width:45px;
+   height:75px;
    padding: 1px;
    border:1px solid #ffffff; 
 }

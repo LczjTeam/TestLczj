@@ -81,7 +81,13 @@ Page({
                 wx.navigateBack({
                     delta: 1
                 })
-                }
+            }, fail: (error) => {
+              wx.showToast({
+                title: '添加失败！',
+                icon: 'none',
+                duration: 2000
+              })
+            }
         })
 
 

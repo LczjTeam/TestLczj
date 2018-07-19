@@ -64,6 +64,12 @@ Page({
           good : res.data,
           color: res.data.t_colors[0].color
         }) 
+      }, fail: (error) => {
+        wx.showToast({
+          title: '数据获取失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
   },
