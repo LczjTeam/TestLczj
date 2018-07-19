@@ -35,12 +35,12 @@ Page({
           console.log(_shop)
           that.setData({
             shop:_shop,
-            latitude: _shop.pos_x,
-            longitude: _shop.pos_y,
+            longitude: _shop.pos_x,
+            latitude: _shop.pos_y,
             markers:[{
               id : _shop.shop,
-              latitude: _shop.pos_x,
-              longitude: _shop.pos_y,
+              longitude: _shop.pos_x,
+              latitude: _shop.pos_y,
               name:_shop.name,
                iconPath: '../../images/icon/location.png',
                label: {
