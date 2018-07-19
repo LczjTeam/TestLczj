@@ -3,7 +3,8 @@ var wxutil = require('../../utils/wxutil.js')
 Page({
   data: {
     currentTab: 0,
-    listData: []
+    listData: [[],,[],[],[]],
+    states: [false, false, false, false], 
   },
   onLoad: function () { 
      this.loadCoupons(0); 
@@ -14,7 +15,10 @@ Page({
     if (this.data.currentTab == index) {
       return false;
     } else {
-      this.loadCoupons(index); 
+      if (!this.data.states[index]){
+        this.loadCoupons(index); 
+      }
+
       this.setData({
         currentTab: index
       })
@@ -25,12 +29,12 @@ Page({
    */
   onPullDownRefresh: function () {
     this.loadCoupons(this.data.currentTab);
+    wx.stopPullDownRefresh();
   },
-  loadCoupons: function (flag) {  
+  loadCoupons: function (flag) {
 
-    this.setData({
-      listData: wx.getStorageSync('tab_' + flag) == null ? []: wx.getStorageSync('tab_' + flag) 
-    })
+    var lists = this.data.listData;
+    var statess = this.data.states;
     
     var params = {};
     params.customer = wx.getStorageSync("customer").vip;
@@ -44,6 +48,13 @@ Page({
       },
       success: (res) => {
         console.log(res.data)
+        if (res.data.length == null){
+          wx.showToast({
+            title: '获取失败',
+            duration:2000
+          })
+        }
+
 
         var list = [];
         for (var i = 0; i < res.data.length; i++) {
@@ -63,13 +74,19 @@ Page({
           list.push(it);
         }
         console.log(JSON.stringify(list))
-
-        wx.setStorageSync('tab_'+flag, list);
-
+        lists[flag] = list;
+        statess[flag] = true;
         this.setData({
-          listData: list
+          listData: lists,
+          states: statess
         })
  
+      }, fail: (error) => {
+        wx.showToast({
+          title: '数据获取失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
  
@@ -109,6 +126,12 @@ Page({
             duration: 2000
           });
         }
+      }, fail: (error) => {
+        wx.showToast({
+          title: '删除失败！',
+          icon: 'none',
+          duration: 2000
+        })
       }});
   }
 
