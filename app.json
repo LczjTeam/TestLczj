@@ -18,6 +18,7 @@
     "pages/person/person",
     "pages/stores/stores",
     "pages/filter/filter",
+    "pages/express/express",
     "pages/evaluate/evaluate",
     "pages/baikedetail/baikedetail",
     "pages/glasses_0/glasses_0",
