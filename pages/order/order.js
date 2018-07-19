@@ -146,5 +146,10 @@ Page({
     var order = e.currentTarget.dataset.id;
     var sum = e.currentTarget.dataset.price; 
     wxutil.wxpay(order,sum); 
+  }, express: function (e) {
+    var order = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../express/express',
+    })
   }
 })

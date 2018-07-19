@@ -12,17 +12,29 @@ Page({
       url: 'http://jx-lczj.nat300.top/Lczj/lczj/listByStart', //仅为示例，并非真实的接口地址
       data: {
         start: self.data.start,
-        length: 20
+        length: 10
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: (res) => {
 
-        var s = self.data.start + 20;
+        var s = self.data.start + 10;
         console.log(res.data)
+
+        var s = this.data.start + 10;
+        var list = []
+        if (this.data.listData != null) {
+          list = this.data.listData;
+        }
+
+        for (var i = 0; i < res.data.length; i++) {
+          list.push(res.data[i]);
+        }
+
+
         self.setData({
-          listData: res.data,
+          listData: list,
           start: s
         })
       }, fail: (error) => {
@@ -37,7 +49,8 @@ Page({
   onPullDownRefresh() {
     setTimeout(() => {
       this.setData({
-        start: 0
+        start: 0, 
+        listData: []
       });
       this.setDatas();
       wx.stopPullDownRefresh();

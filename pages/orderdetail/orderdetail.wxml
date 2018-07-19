@@ -58,7 +58,7 @@
             <view class="good_info">
               <view class="title">{{mywearvo.leftEyeglass.eyeglassVo.t_eyeglass.name}}</view>
               <view class="desc">
-                 品牌: {{mywearvo.leftEyeglass.eyeglassVo.t_brand.name}} \t  功能:{{mywearvo.leftEyeglass.eyeglassVo.t_efficacy.name}}  \t  样式:{{mywearvo.leftEyeglass.eyeglassVo.t_style.name}} \t  样式:{{mywearvo.leftEyeglass.eyeglassVo.t_mask.name}}
+                 品牌: {{mywearvo.leftEyeglass.eyeglassVo.t_brand.name}} \t  功能:{{mywearvo.leftEyeglass.eyeglassVo.t_efficacy.name}}  \t  样式:{{mywearvo.leftEyeglass.eyeglassVo.t_style.name}} \t  膜层:{{mywearvo.leftEyeglass.eyeglassVo.t_mask.name}}
               </view>
             </view>
           </view> 
