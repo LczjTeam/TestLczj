@@ -32,9 +32,9 @@
       <view class="col-4">镜腿长:{{good.t_goods.length}}mm</view>  
     </view>
   </view>
-  <view class="rows" >
+  <view class="rows" style='align-items: center;justify-content: center;height:30px;' >
     <block wx:for="{{good.t_colors}}" wx:key = 'unique'>  
-      <image bindtap='setVal' data-id='{{item.color}}' style='height:30px;width:30px;border-radius:15px;margin-left:10px;{{ color == item.color ? "border:2px solid green;":"" }}'  src="http://jx-lczj.nat300.top/Lczj/colors/{{item.rgb}}"></image>
+      <image bindtap='setVal' data-id='{{item.color}}' style='border-radius:15px;margin-left:10px;{{ color == item.color ? "height:13px;width:13px;border:2px solid green;  animation: my_animation 2s infinite;":"height:30px;width:30px;" }}'  src="http://jx-lczj.nat300.top/Lczj/colors/{{item.rgb}}"></image>
     </block>
   </view>
   <view class='pic'>

@@ -213,7 +213,7 @@ Page({
       },
       success: function (res) {
         console.log(res.data)
-        wx.setStorageSync('goodslist', res.data);
+        wx.setStorageSync('zhpx', res.data);
         wx.navigateBack({
           delta: 1,
         })

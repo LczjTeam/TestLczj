@@ -17,7 +17,7 @@ Page({
    */
   
   onLoad: function (options) {
-
+    wx.removeStorageSync("zhpx");
     var p = wx.getStorageSync("params");
     var params = {};
     params.degress = p.left_ds > p.right_ds ? p.left_ds : p.right_ds;
@@ -134,7 +134,7 @@ Page({
    */
   onShow: function () {
     
-    var sogood = wx.getStorageSync("goodslist");
+    var sogood = wx.getStorageSync("zhpx");
     if(sogood!=null){
       this.setData({
         listData:sogood

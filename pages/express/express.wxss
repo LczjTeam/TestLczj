@@ -49,12 +49,7 @@
   border: 1rpx solid red;
   animation: my_animation 2s infinite;
 }
-@keyframes my_animation{
-    100% {  
-    transform: scale(2);  
-    background-color: transparent;  
-    }  
-}
+
  
 .no_in{
   border: 1rpx solid #d0d0d0;

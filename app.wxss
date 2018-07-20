@@ -13,7 +13,12 @@
 cover-view{ 
   font-family: '微软雅黑';
 }
-
+@keyframes my_animation{
+    100% {  
+    transform: scale(2);  
+    background-color: transparent;  
+    }  
+}
 text,p,cover-view,view,.page{
     font-family: "Microsoft YaHei";
 }
