@@ -78,6 +78,7 @@ Page({
             },
             success:function (res) {
                 console.log("提交成功!")
+                console.log(res.data)
                 wx.navigateBack({
                     delta: 1
                 })

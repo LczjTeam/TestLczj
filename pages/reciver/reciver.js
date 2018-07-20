@@ -107,10 +107,16 @@ Page({
               'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
           },
           success: (res)=> {
+            if (res.data) {
               console.log("提交成功!");
-              this.showPage();
-              console.log(e.detail.value[0]);
-              console.log(wx.getStorageSync("customer").vip);
+              this.showPage(); 
+            } else {
+              wx.showToast({
+                title: '设置失败！',
+                icon: 'none',
+                duration: 2000
+              })
+            }
           }, fail: (error) => {
             wx.showToast({
               title: '设置失败！',
@@ -132,8 +138,27 @@ Page({
           'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
         },
         success: (res) => {
-          console.log("提交成功!");
-          this.showPage(); 
+          if(res.data==true){
+            console.log("提交成功!");
+            this.showPage(); 
+            wx.showToast({
+              title: '删除成功！',
+              icon: 'success',
+              duration: 2000
+            })
+          }else{
+            wx.showToast({
+              title: '删除失败！',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        }, fail: (error) => {
+          wx.showToast({
+            title: '删除失败！',
+            icon: 'none',
+            duration: 2000
+          })
         }
       }) 
 

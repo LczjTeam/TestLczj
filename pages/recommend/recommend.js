@@ -17,6 +17,7 @@ Page({
     wx.request({
       url: 'http://jx-lczj.nat300.top/Lczj/newcustomer/add', //仅为示例，并非真实的接口地址
       data: {
+        vip:wx.getStorageSync("customer").vip ,
         phone:this.data.phone
       },
       header: {

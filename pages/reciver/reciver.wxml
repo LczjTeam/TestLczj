@@ -17,6 +17,17 @@
         </view>
         <view class="hr"></view>
       </block> 
+
+
+      <view wx:if="{{listData.length == 0 }}" class="empty-cart"  >
+        <view class="empty-img">
+          <image src="../../images/icon/no-address.png" style='width:100%;height:100%;'></image>
+        </view>
+        <view class="empty-img" style='height:30px;font-size:14px;;text-align:center;margin-top:0px;'>
+            空空如也,下拉刷新 ~ ~
+        </view>
+      </view>
+
       <view class="btn_tools">
         <view class="btn_view" bindtap='goAdd' >添加收货人</view>
       </view>

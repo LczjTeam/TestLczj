@@ -5,9 +5,13 @@ Page({
   },
   onLoad: function () {
     this.setHeadPic();
+    this.setData({
+      vouchers:wx.getStorageSync("customer").voucher
+    })
     
 
   },onShow(){
+    this.setHeadPic();
     wx.request({
       url: 'http://jx-lczj.nat300.top/Lczj/customer/loadByPhone',
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
@@ -137,8 +141,6 @@ Page({
       wx.navigateTo({
         url: '../trytowear/trytowear',
       })
-  },onShow:function(){
-    this.setHeadPic();
   },
   setHeadPic:function(){
     if (wx.getStorageSync('customer') == null || wx.getStorageSync('customer').vip == null ) {

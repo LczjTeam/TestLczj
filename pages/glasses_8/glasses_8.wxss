@@ -113,3 +113,20 @@ icon{
 .bg{
   color: orange;
 }
+
+.empty-cart{
+  width: 100%;
+  height: auto;
+  background-color: white;
+  padding-top: 140px;
+  margin-top: 0px;
+}
+ 
+ .empty-img{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto; 
+  color:#707070;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+}
