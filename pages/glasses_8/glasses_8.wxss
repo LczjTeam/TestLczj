@@ -116,8 +116,7 @@ icon{
 
 .empty-cart{
   width: 100%;
-  height: auto;
-  background-color: white;
+  height: auto; 
   padding-top: 140px;
   margin-top: 0px;
 }

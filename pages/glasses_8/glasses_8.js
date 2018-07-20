@@ -34,6 +34,7 @@ Page({
       },
       success: (res) => {
         console.log(res.data);
+        wx.setStorageSync('zhpx',res.data)
         
          this.setData({
            listData : res.data
@@ -79,18 +80,47 @@ Page({
           url: "../../images/icon/sort_down.png"
         })
       }
+    } 
+    if (e.currentTarget.dataset.id == '1'){
+      this.setData({
+        listData: wx.getStorageSync('zhpx')
+      })
+    } else if (e.currentTarget.dataset.id == '2') {
+
+      var lists = this.sortByPrice(sort);  
+      this.setData({
+        listData: lists
+      })
+    } else if (e.currentTarget.dataset.id == '3') {
+      this.setData({
+        listData: wx.getStorageSync('zhpx')
+      })
     }
-    wx.request({
-      url: '',
-      data: {
-        isChecked:this.data.isChecked,
-        sort:sort
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
-      },
-    })
+
+
+
+  }, sortByPrice:function(sort){
+    var ls = wx.getStorageSync('zhpx');
+    for(var i = 0 ; i < ls.length  ; i++ ){ 
+      for (var j = i; j < ls.length; j++) {
+        var it = ls[j];
+        if(sort == 1){
+          if (ls[i].t_eyeglass.price > it.t_eyeglass.price) {
+            var itm = ls[i];
+            ls[i] = it;
+            ls[j] = itm; 
+          }
+        } else if (ls[i].t_eyeglass.price < it.t_eyeglass.price) {
+          var itm = ls[i];
+          ls[i] = it;
+          ls[j] = itm; 
+        }
+      } 
+      
+    }
+    console.log(ls);
+    return ls;
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
