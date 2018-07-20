@@ -1,32 +1,9 @@
-<!--pages/map/map.wxml-->
-<view class='page-body'>
+<!--pages/map/map.wxml--> 
   <map
     id='Shops'
-    style='width:100%;height:500px;'
+    style='width:100%;height:100%;'
     latitude='{{latitude}}'
     longitude='{{longitude}}'
     markers='{{markers}}'
     show-location
-  ></map>
-</view> 
-<!-- <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-
-   <view class='block'>
-    <image class='headimage_title' src='{{shop_png}}'></image>
-    <view class="weui-media-box__title">
-        {{shop.name}}
-    </view>
-  </view>
-  <view class='block'>
-    <image class='headimage' src='{{tel_png}}'></image>
-    <view class="weui-media-box__desc"> 
-      <view>联系方式：{{shop.phone}}</view>                             
-    </view>
-  </view>
-  <view class='block'>
-    <image class='headimage' src='{{address_png}}'></image>
-    <view class="weui-media-box__desc"> 
-      <view>地址：{{shop.address}}</view>
-    </view>
-  </view> 
-</view> -->
+  ></map> 
