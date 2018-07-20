@@ -4,9 +4,25 @@
           <view class="shop_name">订单编号：{{order.t_order.order}}</view>
           <view class="order_state">{{order.t_order.state == 0 ?'未付款':(order.t_order.state == 1 ?'待收货':( order.t_order.state == 2 ?'待评价':'已完成'))}}</view>
         </view>
-        <view class="hr"></view>
+        <view  wx:if='{{order.t_order.express !=null && order.t_order.express !=""  }}'  class="hr"></view>
 
-        <view class="items_items_item" style='padding-left: 0px;padding-right: 0px;  border-bottom:1px solid #F7F7F7;' >
+        <view wx:if='{{order.t_order.express !=null && order.t_order.express !=""  }}' class="items_items_item" style='padding-left: 0px;padding-right: 0px;  border-bottom:1px solid #F7F7F7;' data-express='{{order.t_order.express}}'  data-expressid='{{order.t_order.expressid}}' bindtap='express' >
+         
+            <view class="img" style='padding-top:10px;padding-left:25px;'>
+              <image style='width:40px;height:40px;' src="../../images/icon/hj.png" />
+            </view> 
+             <view class="priceandnum"  style='padding-top:15px;  margin-right: 0px;'>
+                <image style='width:30px;height:30px;' src="../../images/icon/next.png" />
+            </view> 
+            <view class="good_info"   style='  width:60%;padding-top:10px;'>
+              <view class="title">快递公司：{{order.t_order.express}}</view>
+              <view class="desc">
+              快递单号：{{order.t_order.expressid}}
+              </view>  
+            </view>  
+        </view>
+        <view  wx:if='{{order.t_address !=null  }}' class="hr"></view>
+        <view  wx:if='{{order.t_address !=null  }}' class="items_items_item" style='padding-left: 0px;padding-right: 0px;  border-bottom:1px solid #F7F7F7;' >
          
             <view class="img" style='padding-top:10px;padding-left:25px;'>
               <image style='width:40px;height:40px;' src="../../images/icon/addrs.png" />
@@ -125,10 +141,10 @@
 
         </block>
 
-        <view style='padding-bottom:5px;' hidden='{{order.t_order.voucher==0}}' >
+        <view wx:if='{{order.t_order.voucher!=0}}' style='padding-bottom:5px;'  >
             <checkbox  disabled   checked="true" style='margin-left:10px;font-size:12px;'>使用优惠券({{order.t_order.voucher}})</checkbox>
         </view>
-         <view hidden='{{order.t_order.voucher==0}}' class="hr"></view> 
+         <view  wx:if='{{order.t_order.voucher!=0}}'  class="hr"></view> 
 
         <view class="items_top" style='font-size:14px;text-align:right;border-top:1px solid #F0F0F0;padding-right:10px;'>
           共{{order.mywearVos.length}}件商品，合计：<label class="price">{{order.t_order.totalfee}}\t\t</label>
@@ -136,6 +152,7 @@
         <view  class="items_top" style='text-align:center;'> 
           <button   hidden='{{ hide == 1 }}' class="weui-btn  btn" type="primary"   plain='true' bindtap='home'  size="mini">返回首页</button>
            <button   hidden='{{ order.t_order.state != 0 }}' class="weui-btn  btn" type="primary"   plain='true' bindtap='pay'  size="mini">立即支付</button>
+           <button   hidden='{{ order.t_order.state != 2 }}' class="weui-btn  btn" type="primary"   plain='true' bindtap='evaluate'  size="mini">评价</button>
         </view>
     </view> 
 </view>

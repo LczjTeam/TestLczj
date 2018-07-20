@@ -63,5 +63,16 @@ Page({
     wx.switchTab({
       url: '../index/index',
     })
+  }, express: function (e) {
+    var express = e.currentTarget.dataset.express;
+    var expressid = e.currentTarget.dataset.expressid;  
+    wx.navigateTo({
+      url: '../express/express?express=' + express + '&expressid=' + expressid,
+    })
+  },
+  evaluate: function (e) { 
+    wx.navigateTo({
+      url: '../evaluate/evaluate?order=' + this.data.order.t_order.order,
+    })
   }
 })
