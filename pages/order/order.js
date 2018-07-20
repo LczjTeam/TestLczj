@@ -73,7 +73,7 @@ Page({
           it.items = items; 
           list.push(it);
         }
-        console.log(JSON.stringify(list))
+       // console.log(JSON.stringify(list))
         lists[flag] = list;
         statess[flag] = true;
         this.setData({

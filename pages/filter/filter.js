@@ -41,8 +41,9 @@ Page({
   showPage: function () {
     var that = this;
     wx.request({
-      url: "http://jx-lczj.nat300.top/Lczj/brand/list",
+      url: "http://jx-lczj.nat300.top/Lczj/brand/list1",
       data: {
+        recommend:'1'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'

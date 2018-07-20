@@ -9,13 +9,13 @@
   border-radius: 20rpx;
   /* box-shadow: 0px 2px 5px #dfdede; */
   position: relative; 
-  border-bottom: 2rpx dashed #efeff1;
+  border-bottom: 2rpx solid #F0F0F0;
   padding: 10px
 
 }
 
 .basis {
-  width: 120rpx;
+  width: 100rpx;
   height: 260rpx;
   border-radius: 50%;
   margin-left: 0rpx;
@@ -30,23 +30,26 @@
   left: 150rpx;
   z-index: 0;
   height: auto;
-   flex: wrap; 
+ 
+  flex: wrap; 
 }
 .button_mini{
-  border: 2rpx solid black;
-  border-radius:5px;
+  border: 2rpx solid #F0F0F0;
+  /* border-radius:5px; */
   margin: 10rpx;
   font-size: 12px;
-  padding-left: 5px;
-  padding-right: 5px
+  padding: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  
 }
 .is_checked{
-  background-color: blanchedalmond
+  background-color: orange;
 }
 
 .option{ 
   float: left;
-  margin: 10rpx
+  margin: 10rpx; 
 }
 
 .rows{
